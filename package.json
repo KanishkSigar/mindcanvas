@@ -1,0 +1,13 @@
+{
+  "name": "mindcanvas",
+  "version": "1.0.0",
+  "description": "Infinite spatial scratchpad with drag-and-drop sticky cards, physics connections, and instant markdown export",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": ["canvas", "spatial-notes", "mindmap", "productivity", "markdown"],
+  "author": "Kanishk",
+  "license": "MIT"
+}
