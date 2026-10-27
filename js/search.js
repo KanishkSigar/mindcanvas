@@ -248,13 +248,13 @@ class CommandPalette {
         store.selectSingleCard(card.id);
         viewport.flyTo(card.x + (card.width || 320) / 2, card.y + 120, null, 400);
 
-        // Visual flash ping on target card
+        // Apple-style focus ring on target card
         const cardEl = document.getElementById(`card-${card.id}`);
         if (cardEl) {
-          cardEl.style.boxShadow = '0 0 0 3px var(--color-cyan), 0 0 35px var(--color-cyan-glow)';
+          cardEl.style.boxShadow = '0 0 0 3px var(--accent-primary), var(--shadow-xl)';
           setTimeout(() => {
             cardEl.style.boxShadow = '';
-          }, 1200);
+          }, 1000);
         }
         sound.playPop(620);
       }

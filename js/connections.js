@@ -38,12 +38,6 @@ class ConnectionsManager {
 
   initSvgDefs() {
     this.svg.innerHTML = `
-      <defs>
-        <filter id="wire-glow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="3" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-      </defs>
       <g id="connections-render-group"></g>
       <path id="connection-preview-path" d="" style="display: none;"></path>
     `;
@@ -64,8 +58,6 @@ class ConnectionsManager {
       if (!fromPt || !toPt) return;
 
       const pathData = this.calculateBezierPath(fromPt, conn.fromPort, toPt, conn.toPort);
-      const sourceCard = store.getCard(conn.fromCard);
-      const colorName = sourceCard ? (sourceCard.color || 'violet') : 'violet';
 
       // SVG Group for connection
       const connGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
@@ -77,29 +69,22 @@ class ConnectionsManager {
       hitPath.setAttribute('d', pathData.d);
       hitPath.setAttribute('class', 'connection-path-backdrop');
 
-      // 2. Ambient glow line
-      const glowPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      glowPath.setAttribute('d', pathData.d);
-      glowPath.setAttribute('class', 'connection-path-glow');
-      glowPath.setAttribute('stroke', `var(--color-${colorName})`);
-      glowPath.setAttribute('stroke-width', '6');
-
-      // 3. Crisp sharp foreground line
+      // 2. Crisp clean line (Apple Freeform style)
       const mainPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       mainPath.setAttribute('d', pathData.d);
       mainPath.setAttribute('class', 'connection-path');
-      mainPath.setAttribute('stroke', `var(--color-${colorName}-light)`);
-      mainPath.setAttribute('stroke-width', '2.5');
+      mainPath.setAttribute('stroke', '#8e8e93');
+      mainPath.setAttribute('stroke-width', '2');
 
-      // 4. Subtle midpoint delete pill
+      // 3. Subtle midpoint delete pill
       const midPoint = pathData.midpoint;
       const deleteGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       deleteGroup.setAttribute('class', 'connection-delete-pill');
       deleteGroup.setAttribute('transform', `translate(${midPoint.x}, ${midPoint.y})`);
 
       deleteGroup.innerHTML = `
-        <circle r="11" fill="var(--bg-surface-elevated)" stroke="var(--color-rose)" stroke-width="1.5" />
-        <path d="M-4 -4 L4 4 M4 -4 L-4 4" stroke="var(--color-rose-light)" stroke-width="1.5" stroke-linecap="round" />
+        <circle r="10" fill="#ffffff" stroke="rgba(0, 0, 0, 0.14)" stroke-width="1" />
+        <path d="M-3.5 -3.5 L3.5 3.5 M3.5 -3.5 L-3.5 3.5" stroke="#ff3b30" stroke-width="1.5" stroke-linecap="round" />
       `;
 
       deleteGroup.addEventListener('click', (e) => {
@@ -109,7 +94,6 @@ class ConnectionsManager {
       });
 
       connGroup.appendChild(hitPath);
-      connGroup.appendChild(glowPath);
       connGroup.appendChild(mainPath);
       connGroup.appendChild(deleteGroup);
 

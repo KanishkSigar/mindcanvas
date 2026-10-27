@@ -250,9 +250,9 @@ class MindCanvasApp {
     const centerY = bounds.y + bounds.height / 2;
 
     const colors = {
-      note: 'violet',
-      checklist: 'emerald',
-      code: 'cyan'
+      note: 'yellow',
+      checklist: 'mint',
+      code: 'sky'
     };
 
     const card = store.addCard({
@@ -260,7 +260,7 @@ class MindCanvasApp {
       title: type === 'checklist' ? 'New Checklist' : type === 'code' ? 'Code Snippet' : 'New Note',
       x: Math.round(centerX - 160),
       y: Math.round(centerY - 100),
-      color: colors[type] || 'violet'
+      color: colors[type] || 'white'
     });
 
     sound.playPop(520);
@@ -304,7 +304,7 @@ class MindCanvasApp {
   }
 
   getRandomColor() {
-    const colors = ['violet', 'cyan', 'emerald', 'amber', 'rose'];
+    const colors = ['white', 'yellow', 'mint', 'sky', 'lilac', 'peach'];
     return colors[Math.floor(Math.random() * colors.length)];
   }
 

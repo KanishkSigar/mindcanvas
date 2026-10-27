@@ -21,7 +21,7 @@ class CardsManager {
     this.onConnectionDragMove = null;
     this.onConnectionDragEnd = null;
 
-    this.colorPalette = ['violet', 'cyan', 'emerald', 'amber', 'rose', 'slate'];
+    this.colorPalette = ['white', 'yellow', 'mint', 'sky', 'lilac', 'peach'];
   }
 
   mount(container, connectionCallbacks) {
@@ -89,7 +89,7 @@ class CardsManager {
     cardEl.id = `card-${card.id}`;
     cardEl.className = 'canvas-card';
     cardEl.setAttribute('data-id', card.id);
-    cardEl.setAttribute('data-color', card.color || 'violet');
+    cardEl.setAttribute('data-color', card.color || 'white');
     cardEl.style.left = `${card.x}px`;
     cardEl.style.top = `${card.y}px`;
     cardEl.style.width = `${card.width || 320}px`;
@@ -139,7 +139,7 @@ class CardsManager {
     this.colorPalette.forEach(col => {
       const swatch = document.createElement('div');
       swatch.className = `color-swatch ${col === card.color ? 'active' : ''}`;
-      swatch.style.background = `var(--color-${col})`;
+      swatch.style.background = `var(--color-${col}-bg, var(--color-${col}))`;
       swatch.addEventListener('click', (e) => {
         e.stopPropagation();
         card.color = col;

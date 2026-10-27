@@ -134,7 +134,7 @@ class Store {
       id,
       type: cardData.type || 'note',
       title: cardData.title || (cardData.type === 'checklist' ? 'Task List' : cardData.type === 'code' ? 'Code Snippet' : 'New Thought'),
-      color: cardData.color || 'violet',
+      color: cardData.color || 'white',
       x: cardData.x ?? 100,
       y: cardData.y ?? 100,
       width: cardData.width || (cardData.type === 'code' ? 360 : 320),

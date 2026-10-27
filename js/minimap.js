@@ -117,7 +117,7 @@ class MinimapEngine {
 
     // 1. Draw connections on minimap
     const conns = store.getAllConnections();
-    this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+    this.ctx.strokeStyle = 'rgba(0, 0, 0, 0.15)';
     this.ctx.lineWidth = 1;
     conns.forEach(conn => {
       const fromCard = store.getCard(conn.fromCard);
@@ -139,13 +139,15 @@ class MinimapEngine {
     cards.forEach(card => {
       const rx = (card.x - minX) * scaleX;
       const ry = (card.y - minY) * scaleY;
-      const rw = Math.max((card.width || 320) * scaleX, 4);
-      const rh = Math.max(160 * scaleY, 3);
+      const rw = Math.max((card.width || 320) * scaleX, 5);
+      const rh = Math.max(160 * scaleY, 4);
 
       this.ctx.fillStyle = this.getColorHex(card.color);
       this.ctx.beginPath();
       this.ctx.roundRect ? this.ctx.roundRect(rx, ry, rw, rh, 2) : this.ctx.rect(rx, ry, rw, rh);
       this.ctx.fill();
+      this.ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+      this.ctx.stroke();
     });
 
     // 3. Position the Viewport Indicator
@@ -164,14 +166,20 @@ class MinimapEngine {
 
   getColorHex(colorName) {
     const map = {
-      violet: '#8b5cf6',
-      cyan: '#06b6d4',
-      emerald: '#10b981',
-      amber: '#f59e0b',
-      rose: '#f43f5e',
-      slate: '#64748b'
+      white: '#ffffff',
+      yellow: '#fff3c4',
+      mint: '#d4f5e2',
+      sky: '#d8ecfd',
+      lilac: '#ebd9fc',
+      peach: '#fde3d8',
+      violet: '#ebd9fc',
+      cyan: '#d8ecfd',
+      emerald: '#d4f5e2',
+      amber: '#fff3c4',
+      rose: '#fde3d8',
+      slate: '#f5f5f7'
     };
-    return map[colorName] || '#8b5cf6';
+    return map[colorName] || '#ffffff';
   }
 }
 
