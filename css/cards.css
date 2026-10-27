@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Canvas Cards Architecture & Aesthetic
+   Apple-Style Frosted Glass Cards (No AI Glowing Filters)
    ========================================================================== */
 
 .canvas-card {
@@ -8,109 +8,82 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--radius-lg);
-  background: var(--bg-glass-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--card-border, var(--border-subtle));
+  background: var(--card-bg, rgba(255, 255, 255, 0.85));
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--card-border, rgba(0, 0, 0, 0.08));
   box-shadow: var(--shadow-card);
   color: var(--text-primary);
   min-width: 260px;
   max-width: 520px;
   width: 320px;
-  transition: box-shadow 0.2s var(--ease-smooth),
-              border-color 0.2s var(--ease-smooth),
+  transition: box-shadow 0.18s var(--ease-smooth),
+              border-color 0.18s var(--ease-smooth),
               transform 0.15s ease-out;
   user-select: none;
   cursor: default;
 }
 
-/* Color Accent Variants */
-.canvas-card[data-color="violet"] {
-  --card-accent: var(--color-violet);
-  --card-accent-light: var(--color-violet-light);
-  --card-glow: var(--color-violet-glow);
-  --card-border: var(--color-violet-border);
-  --card-bg-tint: var(--color-violet-bg);
-}
-
-.canvas-card[data-color="cyan"] {
-  --card-accent: var(--color-cyan);
-  --card-accent-light: var(--color-cyan-light);
-  --card-glow: var(--color-cyan-glow);
-  --card-border: var(--color-cyan-border);
-  --card-bg-tint: var(--color-cyan-bg);
-}
-
-.canvas-card[data-color="emerald"] {
-  --card-accent: var(--color-emerald);
-  --card-accent-light: var(--color-emerald-light);
-  --card-glow: var(--color-emerald-glow);
-  --card-border: var(--color-emerald-border);
-  --card-bg-tint: var(--color-emerald-bg);
-}
-
-.canvas-card[data-color="amber"] {
-  --card-accent: var(--color-amber);
-  --card-accent-light: var(--color-amber-light);
-  --card-glow: var(--color-amber-glow);
-  --card-border: var(--color-amber-border);
-  --card-bg-tint: var(--color-amber-bg);
-}
-
-.canvas-card[data-color="rose"] {
-  --card-accent: var(--color-rose);
-  --card-accent-light: var(--color-rose-light);
-  --card-glow: var(--color-rose-glow);
-  --card-border: var(--color-rose-border);
-  --card-bg-tint: var(--color-rose-bg);
-}
-
+/* Apple Freeform & Notes Pastel Color Variants */
+.canvas-card[data-color="white"],
 .canvas-card[data-color="slate"] {
-  --card-accent: var(--color-slate);
-  --card-accent-light: var(--color-slate-light);
-  --card-glow: var(--color-slate-glow);
-  --card-border: var(--color-slate-border);
-  --card-bg-tint: var(--color-slate-bg);
+  --card-bg: var(--color-white-bg);
+  --card-border: var(--color-white-border);
+  --card-accent: var(--color-white-accent);
 }
 
-/* Card Top Glowing Indicator Line */
-.canvas-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 16px;
-  right: 16px;
-  height: 2px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(90deg, transparent, var(--card-accent), transparent);
-  box-shadow: 0 0 10px var(--card-accent);
-  opacity: 0.85;
-  transition: opacity 0.2s ease, left 0.3s ease, right 0.3s ease;
+.canvas-card[data-color="yellow"],
+.canvas-card[data-color="amber"] {
+  --card-bg: var(--color-yellow-bg);
+  --card-border: var(--color-yellow-border);
+  --card-accent: var(--color-yellow-accent);
 }
 
-/* Card Hover & Active States */
+.canvas-card[data-color="mint"],
+.canvas-card[data-color="emerald"] {
+  --card-bg: var(--color-mint-bg);
+  --card-border: var(--color-mint-border);
+  --card-accent: var(--color-mint-accent);
+}
+
+.canvas-card[data-color="sky"],
+.canvas-card[data-color="cyan"] {
+  --card-bg: var(--color-sky-bg);
+  --card-border: var(--color-sky-border);
+  --card-accent: var(--color-sky-accent);
+}
+
+.canvas-card[data-color="lilac"],
+.canvas-card[data-color="violet"] {
+  --card-bg: var(--color-lilac-bg);
+  --card-border: var(--color-lilac-border);
+  --card-accent: var(--color-lilac-accent);
+}
+
+.canvas-card[data-color="peach"],
+.canvas-card[data-color="rose"] {
+  --card-bg: var(--color-peach-bg);
+  --card-border: var(--color-peach-border);
+  --card-accent: var(--color-peach-accent);
+}
+
+/* Card Hover, Selected & Dragging States */
 .canvas-card:hover {
-  box-shadow: var(--shadow-card-hover), 0 0 20px var(--card-bg-tint);
-  border-color: var(--card-accent);
-}
-
-.canvas-card:hover::before {
-  left: 8px;
-  right: 8px;
-  opacity: 1;
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(0, 0, 0, 0.14);
 }
 
 .canvas-card.is-selected {
-  border-color: var(--card-accent);
-  box-shadow: 0 0 0 2px var(--card-accent), 0 20px 48px -6px rgba(0, 0, 0, 0.85), 0 0 28px var(--card-glow);
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-card-selected);
   z-index: 100 !important;
 }
 
 .canvas-card.is-dragging {
   cursor: grabbing !important;
-  opacity: 0.95;
-  transform: scale(1.025);
-  box-shadow: 0 28px 60px -8px rgba(0, 0, 0, 0.9), 0 0 35px var(--card-glow);
+  opacity: 0.96;
+  transform: scale(1.02);
+  box-shadow: var(--shadow-xl);
   z-index: 200 !important;
   transition: none;
 }
@@ -120,8 +93,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 14px 8px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 10px 14px 6px 14px;
   cursor: grab;
 }
 
@@ -148,8 +120,8 @@
 .card-type-icon {
   display: flex;
   align-items: center;
-  color: var(--card-accent);
-  font-size: 14px;
+  color: var(--text-secondary);
+  font-size: 13px;
 }
 
 .card-title-input {
@@ -165,26 +137,26 @@
   border-radius: var(--radius-xs);
   outline: none;
   cursor: text;
-  transition: background 0.15s ease, box-shadow 0.15s ease;
+  transition: background 0.15s ease;
 }
 
 .card-title-input:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .card-title-input:focus {
-  background: rgba(0, 0, 0, 0.35);
-  box-shadow: 0 0 0 1px var(--card-accent);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
 }
 
-/* Header Actions */
+/* Header Action Buttons */
 .card-header-actions {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   margin-left: 6px;
-  opacity: 0.45;
-  transition: opacity 0.2s ease;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
 }
 
 .canvas-card:hover .card-header-actions,
@@ -196,37 +168,36 @@
   background: transparent;
   border: none;
   color: var(--text-secondary);
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .card-action-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.06);
   color: var(--text-primary);
-  transform: scale(1.08);
 }
 
 .card-action-btn.btn-delete:hover {
-  background: rgba(244, 63, 94, 0.18);
-  color: var(--color-rose-light);
+  background: rgba(255, 59, 48, 0.12);
+  color: #ff3b30;
 }
 
-/* Color Picker Dropdown Popover */
+/* Color Popover (Apple Palette Swatches) */
 .card-color-popover {
   position: absolute;
-  top: 40px;
+  top: 38px;
   right: 14px;
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-hover);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(16px);
+  backdrop-filter: var(--glass-blur);
   display: none;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
@@ -240,7 +211,7 @@
 }
 
 @keyframes popoverIn {
-  from { opacity: 0; transform: translateY(-4px) scale(0.92); }
+  from { opacity: 0; transform: translateY(-4px) scale(0.95); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -248,23 +219,23 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 2px solid transparent;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
   cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.12s ease;
 }
 
 .color-swatch:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 
 .color-swatch.active {
-  border-color: #ffffff;
-  transform: scale(1.15);
+  border-color: #1d1d1f;
+  box-shadow: 0 0 0 1px #1d1d1f;
 }
 
 /* Card Body Content */
 .card-body {
-  padding: 12px 14px;
+  padding: 8px 14px 14px 14px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -276,12 +247,12 @@
   border: none;
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.6;
   resize: none;
   outline: none;
   width: 100%;
-  min-height: 72px;
+  min-height: 68px;
   max-height: 380px;
   overflow-y: auto;
   cursor: text;
@@ -289,15 +260,15 @@
 }
 
 .card-note-textarea::placeholder {
-  color: var(--text-faint);
+  color: var(--text-muted);
 }
 
-/* Checklist Body */
+/* Checklist Body (Apple Reminders Style) */
 .checklist-progress-container {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-bottom: 12px;
+  gap: 4px;
+  margin-bottom: 10px;
 }
 
 .checklist-progress-meta {
@@ -306,80 +277,75 @@
   align-items: center;
   font-size: 11px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: var(--text-muted);
 }
 
 .checklist-progress-bar {
   width: 100%;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.06);
+  height: 4px;
+  background: rgba(0, 0, 0, 0.06);
   border-radius: var(--radius-full);
   overflow: hidden;
 }
 
 .checklist-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--card-accent), var(--card-accent-light));
+  background: var(--accent-primary);
   border-radius: var(--radius-full);
-  transition: width 0.3s var(--ease-smooth);
+  transition: width 0.25s var(--ease-smooth);
 }
 
 .checklist-items {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   max-height: 280px;
   overflow-y: auto;
-  padding-right: 2px;
 }
 
 .checklist-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 6px;
+  padding: 3px 6px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.02);
-  transition: background 0.15s ease;
-  user-select: none;
+  transition: background 0.12s ease;
 }
 
 .checklist-item:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.03);
 }
 
+/* Apple Circular Checkbox */
 .checklist-checkbox {
   appearance: none;
   -webkit-appearance: none;
-  width: 17px;
-  height: 17px;
-  border-radius: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
   border: 1.5px solid var(--text-muted);
   background: transparent;
   cursor: pointer;
   display: grid;
   place-content: center;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   flex-shrink: 0;
 }
 
 .checklist-checkbox:hover {
-  border-color: var(--card-accent);
+  border-color: var(--accent-primary);
 }
 
 .checklist-checkbox:checked {
-  background: var(--card-accent);
-  border-color: var(--card-accent);
-  box-shadow: 0 0 8px var(--card-glow);
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
 }
 
 .checklist-checkbox:checked::before {
   content: "✓";
   color: #ffffff;
-  font-size: 11px;
-  font-weight: 800;
+  font-size: 10px;
+  font-weight: 700;
 }
 
 .checklist-input {
@@ -404,7 +370,7 @@
   border: none;
   color: var(--text-faint);
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12px;
   padding: 2px 4px;
   border-radius: 3px;
   transition: opacity 0.15s, color 0.15s;
@@ -415,33 +381,33 @@
 }
 
 .checklist-item-delete:hover {
-  color: var(--color-rose);
+  color: #ff3b30;
 }
 
 .checklist-add-row {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-top: 10px;
-  color: var(--text-muted);
+  margin-top: 8px;
+  color: var(--text-secondary);
   font-size: 12px;
   padding: 4px 6px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.12s ease;
 }
 
 .checklist-add-row:hover {
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--card-accent-light);
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-primary);
 }
 
-/* Code Snippet Body */
+/* Code Snippet Body (macOS Xcode Light Theme) */
 .card-code-container {
   display: flex;
   flex-direction: column;
-  background: rgba(4, 7, 12, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(245, 245, 247, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: var(--radius-md);
   overflow: hidden;
 }
@@ -450,53 +416,48 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .code-lang-selector {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--card-accent-light);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: 4px;
-  padding: 2px 6px;
+  padding: 2px 5px;
   outline: none;
   cursor: pointer;
-}
-
-.code-lang-selector option {
-  background: var(--bg-surface-elevated);
-  color: var(--text-primary);
 }
 
 .code-copy-btn {
   background: transparent;
   border: none;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 4px;
   font-size: 11px;
   font-weight: 500;
-  padding: 3px 8px;
+  padding: 2px 6px;
   border-radius: 4px;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.12s ease;
 }
 
 .code-copy-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.06);
   color: var(--text-primary);
 }
 
 .card-code-textarea {
   background: transparent;
   border: none;
-  color: #38bdf8;
+  color: #1d1d1f;
   font-family: var(--font-mono);
   font-size: 12px;
   line-height: 1.6;
@@ -504,7 +465,7 @@
   resize: none;
   outline: none;
   width: 100%;
-  min-height: 90px;
+  min-height: 85px;
   max-height: 320px;
   overflow-y: auto;
   user-select: text;
@@ -512,60 +473,61 @@
   white-space: pre;
 }
 
-/* Connector Ports (Pins) */
+/* Connector Ports (Pins) — Clean, subtle, no pulsing glow */
 .card-port {
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
-  background: var(--bg-surface-elevated);
-  border: 2px solid var(--card-accent);
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+  background: #ffffff;
+  border: 1.5px solid var(--text-secondary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   cursor: crosshair;
   z-index: 30;
   opacity: 0;
-  transform: scale(0.6);
-  transition: opacity 0.2s var(--ease-smooth),
-              transform 0.2s var(--ease-spring),
-              background 0.2s,
-              box-shadow 0.2s;
+  transform: scale(0.7);
+  transition: opacity 0.15s var(--ease-smooth),
+              transform 0.15s var(--ease-spring),
+              border-color 0.15s,
+              background 0.15s;
 }
 
 .canvas-card:hover .card-port,
 .canvas-card.is-selected .card-port,
 .canvas-card.is-connecting-source .card-port,
 .is-connecting-mode .card-port {
-  opacity: 0.9;
+  opacity: 0.85;
   transform: scale(1);
 }
 
 .card-port:hover,
 .card-port.is-snap-target {
-  background: var(--card-accent);
-  transform: scale(1.35) !important;
+  background: var(--accent-primary);
+  border-color: #ffffff;
+  transform: scale(1.3) !important;
   opacity: 1 !important;
-  box-shadow: 0 0 14px var(--card-accent), 0 0 0 3px rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3) !important;
 }
 
 .card-port.port-top {
-  top: -7px;
+  top: -5px;
   left: 50%;
-  transform: translateX(-50%) scale(0.6);
+  transform: translateX(-50%) scale(0.7);
 }
 .card-port.port-bottom {
-  bottom: -7px;
+  bottom: -5px;
   left: 50%;
-  transform: translateX(-50%) scale(0.6);
+  transform: translateX(-50%) scale(0.7);
 }
 .card-port.port-left {
-  left: -7px;
+  left: -5px;
   top: 50%;
-  transform: translateY(-50%) scale(0.6);
+  transform: translateY(-50%) scale(0.7);
 }
 .card-port.port-right {
-  right: -7px;
+  right: -5px;
   top: 50%;
-  transform: translateY(-50%) scale(0.6);
+  transform: translateY(-50%) scale(0.7);
 }
 
 .canvas-card:hover .card-port.port-top,
@@ -588,13 +550,13 @@
 /* Card Resize Handle */
 .card-resize-handle {
   position: absolute;
-  bottom: 2px;
-  right: 2px;
-  width: 14px;
-  height: 14px;
+  bottom: 3px;
+  right: 3px;
+  width: 12px;
+  height: 12px;
   cursor: se-resize;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -602,10 +564,10 @@
 
 .card-resize-handle::after {
   content: '';
-  width: 6px;
-  height: 6px;
-  border-right: 2px solid var(--text-muted);
-  border-bottom: 2px solid var(--text-muted);
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid var(--text-muted);
+  border-bottom: 1.5px solid var(--text-muted);
 }
 
 .canvas-card:hover .card-resize-handle {

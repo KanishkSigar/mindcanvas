@@ -1,18 +1,18 @@
 /* ==========================================================================
-   Modals, Command Palette & Export Overlays
+   Apple-Style Modals: macOS Spotlight Search (Ctrl+K) & Export Sheet
    ========================================================================== */
 
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(4, 7, 12, 0.7);
+  background: rgba(0, 0, 0, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: none;
   place-content: center;
   z-index: 1000;
   padding: 20px;
-  animation: fadeIn 0.2s ease-out;
+  animation: fadeIn 0.15s ease-out;
 }
 
 .modal-backdrop.is-open {
@@ -25,23 +25,25 @@
 }
 
 /* ==========================================================================
-   Command Palette (Ctrl + K)
+   macOS Spotlight Command Palette
    ========================================================================== */
 .cmd-palette-box {
   width: 100%;
   max-width: 580px;
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-hover);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--radius-xl);
-  box-shadow: 0 32px 70px -10px rgba(0, 0, 0, 0.9), 0 0 30px rgba(139, 92, 246, 0.15);
+  box-shadow: 0 24px 64px -10px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.06);
+  backdrop-filter: var(--glass-blur-heavy);
+  -webkit-backdrop-filter: var(--glass-blur-heavy);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  animation: scaleUp 0.22s var(--ease-spring);
+  animation: scaleUp 0.18s var(--ease-spring);
 }
 
 @keyframes scaleUp {
-  from { transform: scale(0.94) translateY(-10px); opacity: 0; }
+  from { transform: scale(0.96) translateY(-8px); opacity: 0; }
   to { transform: scale(1) translateY(0); opacity: 1; }
 }
 
@@ -49,14 +51,13 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 16px 20px;
+  padding: 14px 18px;
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(255, 255, 255, 0.02);
 }
 
 .cmd-search-icon {
-  color: var(--accent-primary);
-  font-size: 18px;
+  color: var(--text-secondary);
+  font-size: 16px;
   display: flex;
 }
 
@@ -75,50 +76,48 @@
 }
 
 .cmd-esc-hint {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 11px;
   color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.06);
-  padding: 3px 6px;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
   border-radius: 4px;
 }
 
 .cmd-results-list {
   max-height: 360px;
   overflow-y: auto;
-  padding: 10px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .cmd-group-label {
   font-size: 11px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-faint);
-  padding: 8px 12px 4px 12px;
+  color: var(--text-muted);
+  padding: 6px 12px 2px 12px;
 }
 
 .cmd-result-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px;
-  border-radius: var(--radius-md);
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   background: transparent;
   border: none;
   color: var(--text-primary);
   text-align: left;
-  transition: all 0.15s ease;
+  transition: all 0.12s ease;
   font-family: var(--font-sans);
 }
 
 .cmd-result-item:hover,
 .cmd-result-item.is-active {
-  background: rgba(139, 92, 246, 0.16);
+  background: var(--accent-primary);
   color: #ffffff;
 }
 
@@ -130,18 +129,17 @@
 }
 
 .cmd-result-icon {
-  font-size: 16px;
-  color: var(--text-secondary);
+  font-size: 15px;
   display: flex;
 }
 
 .cmd-result-item:hover .cmd-result-icon,
 .cmd-result-item.is-active .cmd-result-icon {
-  color: var(--color-cyan);
+  color: #ffffff;
 }
 
 .cmd-result-title {
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
@@ -154,83 +152,96 @@
   margin-left: 6px;
 }
 
+.cmd-result-item:hover .cmd-result-subtitle,
+.cmd-result-item.is-active .cmd-result-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .cmd-result-badge {
   font-size: 11px;
-  font-family: var(--font-mono);
-  background: rgba(255, 255, 255, 0.06);
-  padding: 2px 7px;
+  font-family: var(--font-sans);
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
   border-radius: 4px;
   color: var(--text-muted);
 }
 
+.cmd-result-item:hover .cmd-result-badge,
+.cmd-result-item.is-active .cmd-result-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff !important;
+}
+
 /* ==========================================================================
-   Export / Share Modal
+   macOS Sheet Export Modal
    ========================================================================== */
 .export-modal-box {
   width: 100%;
-  max-width: 720px;
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-hover);
+  max-width: 680px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--radius-xl);
-  box-shadow: 0 32px 80px -10px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 24px 64px -10px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.06);
+  backdrop-filter: var(--glass-blur-heavy);
+  -webkit-backdrop-filter: var(--glass-blur-heavy);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  animation: scaleUp 0.22s var(--ease-spring);
+  animation: scaleUp 0.18s var(--ease-spring);
 }
 
 .export-modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: 14px 18px;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .export-modal-title {
   font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .export-close-btn {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.05);
   border: none;
-  color: var(--text-muted);
-  font-size: 18px;
+  color: var(--text-secondary);
+  font-size: 14px;
   cursor: pointer;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.15s ease;
+  transition: all 0.12s ease;
 }
 
 .export-close-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.1);
   color: var(--text-primary);
 }
 
 .export-tabs {
   display: flex;
   gap: 8px;
-  padding: 12px 20px 0 20px;
+  padding: 10px 18px 0 18px;
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(255, 255, 255, 0.015);
 }
 
 .export-tab {
   background: transparent;
   border: none;
   border-bottom: 2px solid transparent;
-  padding: 8px 12px;
+  padding: 6px 10px;
   color: var(--text-muted);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.12s;
 }
 
 .export-tab:hover {
@@ -243,23 +254,23 @@
 }
 
 .export-body {
-  padding: 18px 20px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 .export-preview-box {
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid var(--border-subtle);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: var(--radius-md);
-  padding: 14px;
-  max-height: 300px;
+  padding: 12px;
+  max-height: 280px;
   overflow-y: auto;
   font-family: var(--font-mono);
   font-size: 12px;
   line-height: 1.6;
-  color: #38bdf8;
+  color: #1d1d1f;
   white-space: pre-wrap;
   user-select: text;
 }
@@ -268,40 +279,37 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 10px;
-  padding-top: 8px;
+  gap: 8px;
+  padding-top: 4px;
 }
 
 .modal-btn {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 16px;
+  padding: 7px 14px;
   border-radius: var(--radius-full);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12.5px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   border: 1px solid transparent;
 }
 
 .modal-btn-secondary {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: var(--border-subtle);
+  background: rgba(0, 0, 0, 0.05);
   color: var(--text-primary);
 }
 
 .modal-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.09);
 }
 
 .modal-btn-primary {
-  background: linear-gradient(135deg, var(--color-violet), var(--color-cyan));
+  background: var(--accent-primary);
   color: #ffffff;
-  box-shadow: 0 0 16px var(--color-violet-glow);
 }
 
 .modal-btn-primary:hover {
-  box-shadow: 0 0 24px var(--color-violet-glow);
-  transform: translateY(-1px);
+  background: var(--accent-primary-hover);
 }
