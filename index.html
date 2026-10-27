@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MindCanvas — Infinite Spatial Scratchpad &amp; Visual Mind Map</title>
+  <meta name="description" content="MindCanvas is a modern, fast spatial canvas for non-linear brainstorming, task checklists, code snippets, magnetic idea connections, and instant Markdown export.">
+  <meta name="keywords" content="spatial canvas, mind map, markdown notes, infinite canvas, productivity, developer scratchpad">
+  <meta name="theme-color" content="#07090e">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%238b5cf6'/><stop offset='100%' stop-color='%2306b6d4'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/><circle cx='50' cy='50' r='20' fill='%2307090e'/><circle cx='50' cy='50' r='8' fill='%23ffffff'/></svg>">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/hud.css">
+  <link rel="stylesheet" href="css/modal.css">
+
+  <style>
+    /* Screen reader only utility for SEO & accessibility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Semantic Accessible Heading Structure -->
+  <header class="sr-only">
+    <h1>MindCanvas — Infinite Spatial Scratchpad &amp; Visual Idea Map</h1>
+  </header>
+
+  <!-- Top Floating Navigation Island -->
+  <nav id="top-hud" aria-label="Main Toolbar">
+    <div class="brand-group" id="brand-logo" title="MindCanvas — Spatial Scratchpad">
+      <div class="brand-orb"></div>
+      <span class="brand-title">MindCanvas</span>
+    </div>
+
+    <!-- Quick Card Creation Group -->
+    <div class="hud-btn-group">
+      <button id="btn-add-note" class="hud-btn hud-btn-primary" title="Add Note Card (Key: N)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+        <span>Note</span>
+        <span class="hud-kbd-hint">N</span>
+      </button>
+
+      <button id="btn-add-checklist" class="hud-btn" title="Add Checklist Card (Key: T)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="9 11 12 14 22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+        <span>Tasks</span>
+        <span class="hud-kbd-hint">T</span>
+      </button>
+
+      <button id="btn-add-code" class="hud-btn" title="Add Code Snippet (Key: C)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="16 18 22 12 16 6"/>
+          <polyline points="8 6 2 12 8 18"/>
+        </svg>
+        <span>Code</span>
+        <span class="hud-kbd-hint">C</span>
+      </button>
+    </div>
+
+    <div class="hud-divider"></div>
+
+    <!-- Templates Dropdown Menu -->
+    <div class="templates-dropdown-container">
+      <button id="btn-templates" class="hud-btn" title="Load Starter Boards & Templates">
+        <span>⚡ Templates</span>
+        <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+        </svg>
+      </button>
+
+      <div id="templates-menu" class="templates-menu">
+        <button class="template-item" data-template="startup">
+          <span class="template-item-icon">🚀</span>
+          <div>
+            <div>Product Launch</div>
+            <div style="font-size:11px;color:var(--text-muted)">Vision, tasks & roadmap</div>
+          </div>
+        </button>
+        <button class="template-item" data-template="brainstorm">
+          <span class="template-item-icon">🧠</span>
+          <div>
+            <div>Creative Brainstorm</div>
+            <div style="font-size:11px;color:var(--text-muted)">Personas & feature ideas</div>
+          </div>
+        </button>
+        <button class="template-item" data-template="blank">
+          <span class="template-item-icon">✨</span>
+          <div>
+            <div>Blank Slate</div>
+            <div style="font-size:11px;color:var(--text-muted)">Clean empty canvas</div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Button -->
+    <button id="btn-search-trigger" class="hud-btn" title="Search cards & commands (Ctrl+K)">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <span>Search</span>
+      <span class="hud-kbd-hint">Ctrl+K</span>
+    </button>
+
+    <!-- Audio SFX Toggle -->
+    <button id="btn-sound-toggle" class="hud-btn hud-btn-icon-only" title="Toggle Sound Synthesizer">
+      <div class="sound-bars">
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+      </div>
+    </button>
+
+    <div class="hud-divider"></div>
+
+    <!-- Export & Import Buttons -->
+    <div class="hud-btn-group">
+      <button id="btn-export-trigger" class="hud-btn" title="Export Markdown or JSON Backup">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Export</span>
+      </button>
+
+      <button id="btn-import-trigger" class="hud-btn hud-btn-icon-only" title="Import JSON Board">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+      </button>
+      <input type="file" id="import-file-input" accept=".json" style="display: none;">
+
+      <button id="btn-clear-board" class="hud-btn hud-btn-icon-only" title="Clear Canvas">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="3 6 5 6 21 6"/>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Master Infinite Canvas Viewport -->
+  <main id="canvas-viewport" role="main">
+    <!-- Interactive Background Dot Grid -->
+    <div id="canvas-grid"></div>
+
+    <!-- Ambient Vignette & Depth Glow -->
+    <div class="canvas-ambient-vignette"></div>
+
+    <!-- Transformed World Space (Pan & Zoom Matrix) -->
+    <div id="canvas-world">
+      <!-- SVG Dynamic Connections Layer -->
+      <svg id="connections-svg"></svg>
+
+      <!-- Interactive Cards Layer -->
+      <div id="cards-layer"></div>
+    </div>
+  </main>
+
+  <!-- Bottom-Left Spatial Navigation & Zoom Island -->
+  <aside id="bottom-left-hud" aria-label="Zoom and Viewport Controls">
+    <button id="btn-zoom-out" class="zoom-action-btn" title="Zoom Out (-)">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+    <button id="zoom-pct-btn" class="zoom-pct-btn" title="Reset to 100%">95%</button>
+    <button id="btn-zoom-in" class="zoom-action-btn" title="Zoom In (+)">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+
+    <div class="hud-divider"></div>
+
+    <button id="btn-fit-screen" class="zoom-action-btn" title="Fit all cards to screen (Key: F)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+      </svg>
+    </button>
+
+    <div class="hud-divider"></div>
+
+    <div id="canvas-stats-pill" class="canvas-stats-pill">0 cards • 0 links</div>
+  </aside>
+
+  <!-- Bottom-Center Shortcut Helpers Pill -->
+  <div id="shortcuts-pill">
+    <div class="shortcut-item">
+      <span class="shortcut-key">Space + Drag</span>
+      <span>Pan</span>
+    </div>
+    <div class="shortcut-item">
+      <span class="shortcut-key">Scroll</span>
+      <span>Zoom</span>
+    </div>
+    <div class="shortcut-item">
+      <span class="shortcut-key">Double Click</span>
+      <span>New Note</span>
+    </div>
+    <div class="shortcut-item">
+      <span class="shortcut-key">Drag Dots</span>
+      <span>Connect</span>
+    </div>
+  </div>
+
+  <!-- Bottom-Right Live Minimap Radar -->
+  <aside id="minimap-wrapper" aria-label="Minimap Overview">
+    <div id="minimap-container">
+      <canvas id="minimap-canvas"></canvas>
+      <div id="minimap-viewport-indicator"></div>
+    </div>
+    <button id="minimap-toggle-btn" class="minimap-toggle-btn">✕ Hide</button>
+  </aside>
+
+  <!-- Command Palette Modal (Ctrl + K) -->
+  <div id="cmd-palette-modal" class="modal-backdrop">
+    <div class="cmd-palette-box">
+      <div class="cmd-palette-header">
+        <span class="cmd-search-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </span>
+        <input type="text" id="cmd-search-input" class="cmd-search-input" placeholder="Search cards, tasks, code, or commands..." autocomplete="off">
+        <span class="cmd-esc-hint">ESC</span>
+      </div>
+      <div id="cmd-results-list" class="cmd-results-list"></div>
+    </div>
+  </div>
+
+  <!-- Export / Share Modal -->
+  <div id="export-modal" class="modal-backdrop">
+    <div class="export-modal-box">
+      <div class="export-modal-header">
+        <span class="export-modal-title">Export Canvas Content</span>
+        <button class="export-close-btn" title="Close modal">✕</button>
+      </div>
+
+      <div class="export-tabs">
+        <button class="export-tab is-active" data-tab="markdown">Markdown (.md)</button>
+        <button class="export-tab" data-tab="json">JSON Backup</button>
+      </div>
+
+      <div class="export-body">
+        <pre id="export-preview-content" class="export-preview-box"></pre>
+
+        <div class="export-actions-row">
+          <button id="export-copy-btn" class="modal-btn modal-btn-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            <span>Copy to Clipboard</span>
+          </button>
+          <button id="export-download-btn" class="modal-btn modal-btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>Download File</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Stack -->
+  <div id="toast-container"></div>
+
+  <!-- Boot Scripts -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
