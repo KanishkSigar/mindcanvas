@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -10,7 +10,7 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: var(--bg-deep);
+  background-color: var(--bg-canvas);
   color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: 14px;
@@ -20,14 +20,14 @@ html, body {
   user-select: none;
 }
 
-/* Master Canvas Container */
+/* Master Canvas Viewport */
 #canvas-viewport {
   position: relative;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   cursor: grab;
-  background-color: var(--bg-deep);
+  background-color: var(--bg-canvas);
 }
 
 #canvas-viewport.is-panning {
@@ -38,29 +38,17 @@ html, body {
   cursor: crosshair !important;
 }
 
-/* Infinite Dot Grid Background */
+/* Clean Infinite Canvas (All dots & shining removed) */
 #canvas-grid {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: var(--bg-deep);
-  background-image: radial-gradient(var(--grid-dot-color) 1.2px, transparent 1.2px);
-  background-size: 28px 28px;
-  background-position: 0 0;
-  will-change: background-position, background-size;
-  transition: opacity 0.3s ease;
+  background-color: var(--bg-canvas);
 }
 
-/* Radiant Center Vignette & Ambient Glow */
+/* Ambient vignette removed completely */
 .canvas-ambient-vignette {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 65%),
-              radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.04) 0%, transparent 50%),
-              radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(7, 9, 14, 0.6) 100%);
-  z-index: 1;
+  display: none !important;
 }
 
 /* Transformed World Layer */
@@ -73,7 +61,7 @@ html, body {
   z-index: 2;
 }
 
-/* Dynamic SVG Connections Layer */
+/* Clean Apple-style SVG Connections */
 #connections-svg {
   position: absolute;
   top: 0;
@@ -88,68 +76,51 @@ html, body {
 .connection-path-backdrop {
   fill: none;
   stroke: transparent;
-  stroke-width: 20px;
+  stroke-width: 18px;
   pointer-events: stroke;
   cursor: pointer;
 }
 
 .connection-path {
   fill: none;
+  stroke: #8e8e93;
+  stroke-width: 2px;
   stroke-linecap: round;
-  transition: stroke 0.2s ease, stroke-width 0.2s ease, opacity 0.2s ease;
+  transition: stroke 0.15s ease, stroke-width 0.15s ease;
   pointer-events: stroke;
   cursor: pointer;
 }
 
+/* Remove shining glow */
 .connection-path-glow {
-  fill: none;
-  stroke-linecap: round;
-  opacity: 0.3;
-  filter: blur(4px);
-  pointer-events: none;
+  display: none !important;
 }
 
 .connection-group:hover .connection-path {
-  stroke-width: 3.5px !important;
-  stroke: var(--color-rose-light) !important;
-}
-
-.connection-group:hover .connection-path-glow {
-  stroke: var(--color-rose) !important;
-  opacity: 0.8 !important;
-  filter: blur(6px);
+  stroke-width: 2.5px !important;
+  stroke: #ff3b30 !important;
 }
 
 .connection-flow-dot {
-  fill: #ffffff;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
-  pointer-events: none;
+  display: none !important;
 }
 
-/* Wire preview during connection drag */
+/* Clean preview wire during connection */
 #connection-preview-path {
   fill: none;
   stroke: var(--accent-primary);
-  stroke-width: 2.5px;
-  stroke-dasharray: 6 6;
-  animation: strokeDashAnim 0.8s linear infinite;
+  stroke-width: 2px;
+  stroke-dasharray: 5 4;
   pointer-events: none;
-  filter: drop-shadow(0 0 8px var(--accent-glow));
 }
 
-@keyframes strokeDashAnim {
-  to {
-    stroke-dashoffset: -12;
-  }
-}
-
-/* Connection hover delete pill */
+/* Clean Apple-style delete pill */
 .connection-delete-pill {
   pointer-events: all;
   cursor: pointer;
   opacity: 0;
-  transform: scale(0.7);
-  transition: opacity 0.2s var(--ease-smooth), transform 0.2s var(--ease-spring);
+  transform: scale(0.8);
+  transition: opacity 0.15s var(--ease-smooth), transform 0.15s var(--ease-spring);
 }
 
 .connection-group:hover .connection-delete-pill {
@@ -166,19 +137,18 @@ html, body {
   z-index: 20;
 }
 
-/* Marquee selection box */
+/* Marquee selection box (macOS Finder style) */
 #marquee-select {
   position: absolute;
-  border: 1px dashed var(--accent-primary);
-  background-color: rgba(139, 92, 246, 0.12);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--accent-primary);
+  background-color: rgba(0, 113, 227, 0.1);
+  border-radius: var(--radius-xs);
   pointer-events: none;
   z-index: 99;
   display: none;
-  box-shadow: 0 0 16px rgba(139, 92, 246, 0.2);
 }
 
-/* Toast Notification System */
+/* Apple iOS/macOS Frosted Glass Toasts */
 #toast-container {
   position: fixed;
   bottom: 24px;
@@ -187,7 +157,7 @@ html, body {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   z-index: 1000;
   pointer-events: none;
 }
@@ -196,38 +166,39 @@ html, body {
   pointer-events: all;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 18px;
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-hover);
+  gap: 8px;
+  padding: 9px 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-lg), 0 0 16px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-lg);
   color: var(--text-primary);
   font-size: 13px;
   font-weight: 500;
-  animation: toastIn 0.3s var(--ease-spring) forwards;
-  transition: all 0.25s ease;
+  animation: toastIn 0.22s var(--ease-spring) forwards;
+  transition: all 0.2s ease;
 }
 
 .toast.toast-out {
-  animation: toastOut 0.25s var(--ease-smooth) forwards;
+  animation: toastOut 0.2s var(--ease-smooth) forwards;
 }
 
 .toast-icon {
-  font-size: 15px;
+  font-size: 14px;
   display: flex;
   align-items: center;
 }
 
-.toast-success .toast-icon { color: var(--color-emerald); }
-.toast-info .toast-icon { color: var(--color-cyan); }
-.toast-warning .toast-icon { color: var(--color-amber); }
+.toast-success .toast-icon { color: #34c759; }
+.toast-info .toast-icon { color: var(--accent-primary); }
+.toast-warning .toast-icon { color: #ff9500; }
 
 @keyframes toastIn {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.9);
+    transform: translateY(14px) scale(0.96);
   }
   to {
     opacity: 1;
@@ -242,14 +213,14 @@ html, body {
   }
   to {
     opacity: 0;
-    transform: translateY(-16px) scale(0.95);
+    transform: translateY(-10px) scale(0.98);
   }
 }
 
-/* Custom Scrollbar for textareas & modals */
+/* Subtle Apple Scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -257,10 +228,10 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.16);
   border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.24);
+  background: rgba(0, 0, 0, 0.28);
 }

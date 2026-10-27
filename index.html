@@ -6,10 +6,10 @@
   <title>MindCanvas — Infinite Spatial Scratchpad &amp; Visual Mind Map</title>
   <meta name="description" content="MindCanvas is a modern, fast spatial canvas for non-linear brainstorming, task checklists, code snippets, magnetic idea connections, and instant Markdown export.">
   <meta name="keywords" content="spatial canvas, mind map, markdown notes, infinite canvas, productivity, developer scratchpad">
-  <meta name="theme-color" content="#07090e">
+  <meta name="theme-color" content="#f5f5f7">
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%238b5cf6'/><stop offset='100%' stop-color='%2306b6d4'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/><circle cx='50' cy='50' r='20' fill='%2307090e'/><circle cx='50' cy='50' r='8' fill='%23ffffff'/></svg>">
+  <!-- Favicon (Apple Minimal Style) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231d1d1f'/><circle cx='38' cy='38' r='14' fill='%230071e3'/><circle cx='64' cy='64' r='14' fill='%23d4f5e2'/><path d='M46 46 L56 56' stroke='%23ffffff' stroke-width='5' stroke-linecap='round'/></svg>">
 
   <!-- Google Fonts Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +47,12 @@
   <!-- Top Floating Navigation Island -->
   <nav id="top-hud" aria-label="Main Toolbar">
     <div class="brand-group" id="brand-logo" title="MindCanvas — Spatial Scratchpad">
-      <div class="brand-orb"></div>
+      <div class="brand-orb">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <rect x="3" y="3" width="18" height="18" rx="4"/>
+          <path d="M9 12h6M12 9v6"/>
+        </svg>
+      </div>
       <span class="brand-title">MindCanvas</span>
     </div>
 
@@ -168,11 +173,8 @@
 
   <!-- Master Infinite Canvas Viewport -->
   <main id="canvas-viewport" role="main">
-    <!-- Interactive Background Dot Grid -->
+    <!-- Clean Infinite Canvas Background -->
     <div id="canvas-grid"></div>
-
-    <!-- Ambient Vignette & Depth Glow -->
-    <div class="canvas-ambient-vignette"></div>
 
     <!-- Transformed World Space (Pan & Zoom Matrix) -->
     <div id="canvas-world">
