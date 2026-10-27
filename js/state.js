@@ -4,7 +4,7 @@
 
 import { TEMPLATES } from './templates.js';
 
-const STORAGE_KEY = 'mindcanvas_board_v1';
+const STORAGE_KEY = 'mindcanvas_board_v2';
 
 class Store {
   constructor() {
@@ -134,7 +134,7 @@ class Store {
       id,
       type: cardData.type || 'note',
       title: cardData.title || (cardData.type === 'checklist' ? 'Task List' : cardData.type === 'code' ? 'Code Snippet' : 'New Thought'),
-      color: cardData.color || 'white',
+      color: cardData.color || 'periwinkle',
       x: cardData.x ?? 100,
       y: cardData.y ?? 100,
       width: cardData.width || (cardData.type === 'code' ? 360 : 320),

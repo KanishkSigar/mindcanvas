@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Apple-Style Floating Glass HUD & Navigation (macOS Dynamic Island Style)
+   MindCanvas — Mobile-Optimized Frosted Glass Floating HUD
    ========================================================================== */
 
 /* Top Navigation Bar */
@@ -10,50 +10,50 @@
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 12px;
+  gap: 8px;
+  padding: 6px 14px;
   background: var(--bg-glass);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--border-glass);
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-hud);
   z-index: 500;
+  max-width: 95vw;
   transition: all 0.2s var(--ease-smooth);
 }
 
 #top-hud:hover {
-  border-color: var(--border-hover);
   box-shadow: var(--shadow-lg);
+  border-color: rgba(255, 255, 255, 1);
 }
 
-/* Brand Identity (Clean Apple Freeform Minimal Style) */
+/* Brand Identity */
 .brand-group {
   display: flex;
   align-items: center;
   gap: 8px;
   padding-right: 10px;
-  border-right: 1px solid var(--border-subtle);
+  border-right: 1px solid rgba(160, 175, 225, 0.3);
   cursor: pointer;
 }
 
 .brand-orb {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  background: #1d1d1f;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background: var(--accent-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 10px;
-  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
 }
 
 .brand-title {
   font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 14.5px;
+  font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--text-primary);
 }
@@ -62,7 +62,7 @@
 .hud-btn-group {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
 }
 
 .hud-btn {
@@ -70,61 +70,62 @@
   align-items: center;
   gap: 5px;
   padding: 6px 12px;
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-full);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 12.5px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.15s var(--ease-smooth);
+  transition: all 0.16s var(--ease-smooth);
   outline: none;
   white-space: nowrap;
 }
 
 .hud-btn:hover {
-  background: rgba(0, 0, 0, 0.07);
+  background: #ffffff;
+  border-color: rgba(255, 255, 255, 1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(90, 110, 180, 0.1);
 }
 
 .hud-btn:active {
-  transform: scale(0.98);
+  transform: translateY(0);
 }
 
-/* Primary Button (Apple System Blue) */
+/* Primary Creation Button (Pastel Blue Gradient) */
 .hud-btn-primary {
-  background: var(--accent-primary);
+  background: var(--accent-gradient);
+  border-color: transparent;
   color: #ffffff;
+  box-shadow: 0 4px 14px rgba(83, 144, 245, 0.32);
 }
 
 .hud-btn-primary:hover {
-  background: var(--accent-primary-hover);
+  background: linear-gradient(135deg, #4f94f8, #7c3aed);
+  box-shadow: 0 6px 18px rgba(83, 144, 245, 0.4);
 }
 
 .hud-btn-icon-only {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   padding: 0;
   justify-content: center;
   border-radius: 50%;
 }
 
-.hud-btn.is-active {
-  background: #1d1d1f;
-  color: #ffffff;
-}
-
 .hud-kbd-hint {
   font-size: 10px;
   font-family: var(--font-sans);
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.45);
   padding: 1px 5px;
   border-radius: 4px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .hud-btn-primary .hud-kbd-hint {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
   color: #ffffff;
 }
 
@@ -133,20 +134,20 @@
   display: flex;
   align-items: flex-end;
   gap: 2px;
-  height: 11px;
-  width: 12px;
+  height: 12px;
+  width: 13px;
 }
 
 .sound-bar {
-  width: 2px;
+  width: 2.2px;
   background: var(--text-secondary);
   border-radius: 1px;
   transition: height 0.15s ease, background 0.15s ease;
 }
 
-.sound-bar:nth-child(1) { height: 3px; }
-.sound-bar:nth-child(2) { height: 9px; }
-.sound-bar:nth-child(3) { height: 5px; }
+.sound-bar:nth-child(1) { height: 4px; }
+.sound-bar:nth-child(2) { height: 10px; }
+.sound-bar:nth-child(3) { height: 6px; }
 
 .hud-btn.sound-muted .sound-bar {
   height: 2px !important;
@@ -163,13 +164,13 @@
   top: calc(100% + 8px);
   left: 0;
   background: var(--bg-glass-dropdown);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--border-glass);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-xl);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   padding: 6px;
-  min-width: 210px;
+  min-width: 220px;
   display: none;
   flex-direction: column;
   gap: 3px;
@@ -203,7 +204,7 @@
 }
 
 .template-item:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .template-item-icon {
@@ -211,7 +212,7 @@
 }
 
 /* ==========================================================================
-   Bottom-Left Zoom & Stats Island (Apple Map Zoom Control Style)
+   Bottom-Left Zoom & Stats Island
    ========================================================================== */
 #bottom-left-hud {
   position: fixed;
@@ -224,7 +225,7 @@
   background: var(--bg-glass);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--border-glass);
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-hud);
   z-index: 400;
@@ -233,7 +234,7 @@
 .zoom-pct-btn {
   font-family: var(--font-sans);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   min-width: 44px;
   text-align: center;
   color: var(--text-secondary);
@@ -247,7 +248,7 @@
 
 .zoom-pct-btn:hover {
   color: var(--text-primary);
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .zoom-action-btn {
@@ -261,18 +262,18 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.12s, color 0.12s;
+  transition: all 0.12s ease;
 }
 
 .zoom-action-btn:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.8);
   color: var(--text-primary);
 }
 
 .hud-divider {
   width: 1px;
   height: 14px;
-  background: var(--border-subtle);
+  background: rgba(160, 175, 225, 0.3);
   margin: 0 2px;
 }
 
@@ -284,7 +285,7 @@
 }
 
 /* ==========================================================================
-   Bottom-Right Minimap Radar (Apple Glass Map Style)
+   Bottom-Right Minimap Radar
    ========================================================================== */
 #minimap-wrapper {
   position: fixed;
@@ -303,18 +304,18 @@
   background: var(--bg-glass);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--border-glass);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-hud);
   position: relative;
   overflow: hidden;
   cursor: crosshair;
-  transition: border-color 0.18s, box-shadow 0.18s, height 0.25s ease, width 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 #minimap-container:hover {
-  border-color: var(--border-hover);
   box-shadow: var(--shadow-lg);
+  border-color: rgba(255, 255, 255, 1);
 }
 
 #minimap-container.is-collapsed {
@@ -334,8 +335,8 @@
 #minimap-viewport-indicator {
   position: absolute;
   border: 1.5px solid var(--accent-primary);
-  background: rgba(0, 113, 227, 0.08);
-  border-radius: 2px;
+  background: rgba(83, 144, 245, 0.12);
+  border-radius: 3px;
   pointer-events: none;
 }
 
@@ -343,7 +344,7 @@
   background: var(--bg-glass);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--border-glass);
   border-radius: var(--radius-full);
   color: var(--text-secondary);
   font-size: 11px;
@@ -358,11 +359,11 @@
 
 .minimap-toggle-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;
 }
 
 /* ==========================================================================
-   Help & Shortcuts Bar (Apple Capsule Style)
+   Help & Shortcuts Bar
    ========================================================================== */
 #shortcuts-pill {
   position: fixed;
@@ -372,16 +373,17 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 5px 14px;
-  background: rgba(255, 255, 255, 0.72);
+  padding: 6px 16px;
+  background: var(--bg-glass);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--border-glass);
   border-radius: var(--radius-full);
   font-size: 11px;
   color: var(--text-secondary);
   pointer-events: none;
   z-index: 300;
+  box-shadow: var(--shadow-sm);
 }
 
 .shortcut-item {
@@ -393,9 +395,49 @@
 .shortcut-key {
   font-family: var(--font-sans);
   font-size: 10px;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.8);
   color: var(--text-primary);
-  padding: 1px 4px;
-  border-radius: 3px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid rgba(160, 175, 225, 0.3);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  #top-hud {
+    top: 10px;
+    padding: 5px 10px;
+    gap: 6px;
+    max-width: 96vw;
+    overflow-x: auto;
+  }
+
+  .brand-title {
+    display: none;
+  }
+
+  .hud-btn {
+    padding: 5px 9px;
+    font-size: 11.5px;
+  }
+
+  .hud-kbd-hint {
+    display: none;
+  }
+
+  #bottom-left-hud {
+    bottom: 12px;
+    left: 12px;
+    padding: 4px 6px;
+  }
+
+  #minimap-wrapper {
+    bottom: 12px;
+    right: 12px;
+  }
+
+  #minimap-container {
+    width: 140px;
+    height: 90px;
+  }
 }

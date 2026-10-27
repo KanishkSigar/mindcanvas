@@ -21,7 +21,7 @@ class CardsManager {
     this.onConnectionDragMove = null;
     this.onConnectionDragEnd = null;
 
-    this.colorPalette = ['white', 'yellow', 'mint', 'sky', 'lilac', 'peach'];
+    this.colorPalette = ['periwinkle', 'lavender', 'sky', 'lilac', 'indigo', 'frost'];
   }
 
   mount(container, connectionCallbacks) {
@@ -89,7 +89,7 @@ class CardsManager {
     cardEl.id = `card-${card.id}`;
     cardEl.className = 'canvas-card';
     cardEl.setAttribute('data-id', card.id);
-    cardEl.setAttribute('data-color', card.color || 'white');
+    cardEl.setAttribute('data-color', card.color || 'periwinkle');
     cardEl.style.left = `${card.x}px`;
     cardEl.style.top = `${card.y}px`;
     cardEl.style.width = `${card.width || 320}px`;

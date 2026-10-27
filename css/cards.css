@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Apple-Style Frosted Glass Cards (No AI Glowing Filters)
+   MindCanvas — Pastel Frosted Glass Cards with Layered Depth
    ========================================================================== */
 
 .canvas-card {
@@ -8,69 +8,74 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--radius-lg);
-  background: var(--card-bg, rgba(255, 255, 255, 0.85));
+  background: var(--card-bg, rgba(255, 255, 255, 0.75));
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--card-border, rgba(0, 0, 0, 0.08));
+  border: 1.5px solid var(--card-border, rgba(255, 255, 255, 0.95));
   box-shadow: var(--shadow-card);
   color: var(--text-primary);
-  min-width: 260px;
+  min-width: 270px;
   max-width: 520px;
   width: 320px;
-  transition: box-shadow 0.18s var(--ease-smooth),
-              border-color 0.18s var(--ease-smooth),
-              transform 0.15s ease-out;
+  transition: box-shadow 0.2s var(--ease-smooth),
+              border-color 0.2s var(--ease-smooth),
+              transform 0.16s ease-out;
   user-select: none;
   cursor: default;
 }
 
-/* Apple Freeform & Notes Pastel Color Variants */
+/* Pastel Blue & Purple Color Schemes */
+.canvas-card[data-color="frost"],
 .canvas-card[data-color="white"],
 .canvas-card[data-color="slate"] {
-  --card-bg: var(--color-white-bg);
-  --card-border: var(--color-white-border);
-  --card-accent: var(--color-white-accent);
+  --card-bg: var(--color-frost-bg);
+  --card-border: var(--color-frost-border);
+  --card-accent: var(--color-frost-accent);
 }
 
+.canvas-card[data-color="periwinkle"],
 .canvas-card[data-color="yellow"],
 .canvas-card[data-color="amber"] {
-  --card-bg: var(--color-yellow-bg);
-  --card-border: var(--color-yellow-border);
-  --card-accent: var(--color-yellow-accent);
+  --card-bg: var(--color-periwinkle-bg);
+  --card-border: var(--color-periwinkle-border);
+  --card-accent: var(--color-periwinkle-accent);
 }
 
-.canvas-card[data-color="mint"],
-.canvas-card[data-color="emerald"] {
-  --card-bg: var(--color-mint-bg);
-  --card-border: var(--color-mint-border);
-  --card-accent: var(--color-mint-accent);
+.canvas-card[data-color="lavender"],
+.canvas-card[data-color="violet"] {
+  --card-bg: var(--color-lavender-bg);
+  --card-border: var(--color-lavender-border);
+  --card-accent: var(--color-lavender-accent);
 }
 
 .canvas-card[data-color="sky"],
-.canvas-card[data-color="cyan"] {
+.canvas-card[data-color="cyan"],
+.canvas-card[data-color="mint"],
+.canvas-card[data-color="emerald"] {
   --card-bg: var(--color-sky-bg);
   --card-border: var(--color-sky-border);
   --card-accent: var(--color-sky-accent);
 }
 
 .canvas-card[data-color="lilac"],
-.canvas-card[data-color="violet"] {
+.canvas-card[data-color="peach"],
+.canvas-card[data-color="rose"] {
   --card-bg: var(--color-lilac-bg);
   --card-border: var(--color-lilac-border);
   --card-accent: var(--color-lilac-accent);
 }
 
-.canvas-card[data-color="peach"],
-.canvas-card[data-color="rose"] {
-  --card-bg: var(--color-peach-bg);
-  --card-border: var(--color-peach-border);
-  --card-accent: var(--color-peach-accent);
+.canvas-card[data-color="indigo"] {
+  --card-bg: var(--color-indigo-bg);
+  --card-border: var(--color-indigo-border);
+  --card-accent: var(--color-indigo-accent);
 }
 
 /* Card Hover, Selected & Dragging States */
 .canvas-card:hover {
   box-shadow: var(--shadow-card-hover);
-  border-color: rgba(0, 0, 0, 0.14);
+  border-color: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
 }
 
 .canvas-card.is-selected {
@@ -81,8 +86,8 @@
 
 .canvas-card.is-dragging {
   cursor: grabbing !important;
-  opacity: 0.96;
-  transform: scale(1.02);
+  opacity: 0.98;
+  transform: scale(1.025);
   box-shadow: var(--shadow-xl);
   z-index: 200 !important;
   transition: none;
@@ -93,7 +98,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px 6px 14px;
+  padding: 12px 14px 6px 14px;
   cursor: grab;
 }
 
@@ -120,8 +125,8 @@
 .card-type-icon {
   display: flex;
   align-items: center;
-  color: var(--text-secondary);
-  font-size: 13px;
+  color: var(--card-accent);
+  font-size: 14px;
 }
 
 .card-title-input {
@@ -129,8 +134,8 @@
   border: none;
   color: var(--text-primary);
   font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 14.5px;
+  font-weight: 700;
   letter-spacing: -0.01em;
   width: 100%;
   padding: 3px 6px;
@@ -141,21 +146,21 @@
 }
 
 .card-title-input:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .card-title-input:focus {
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.35);
 }
 
 /* Header Action Buttons */
 .card-header-actions {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
   margin-left: 6px;
-  opacity: 0.5;
+  opacity: 0.55;
   transition: opacity 0.15s ease;
 }
 
@@ -165,43 +170,44 @@
 }
 
 .card-action-btn {
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   color: var(--text-secondary);
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: all 0.15s ease;
 }
 
 .card-action-btn:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--text-primary);
+  transform: scale(1.05);
 }
 
 .card-action-btn.btn-delete:hover {
-  background: rgba(255, 59, 48, 0.12);
-  color: #ff3b30;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
 }
 
-/* Color Popover (Apple Palette Swatches) */
+/* Color Popover (Pastel Blue & Purple Palette) */
 .card-color-popover {
   position: absolute;
-  top: 38px;
+  top: 40px;
   right: 14px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px solid var(--border-glass);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   backdrop-filter: var(--glass-blur);
   display: none;
   grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  padding: 8px;
+  gap: 7px;
+  padding: 10px;
   z-index: 50;
   animation: popoverIn 0.15s var(--ease-spring);
 }
@@ -216,21 +222,22 @@
 }
 
 .color-swatch {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border: 1.5px solid rgba(160, 175, 225, 0.4);
   cursor: pointer;
-  transition: transform 0.12s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .color-swatch:hover {
-  transform: scale(1.15);
+  transform: scale(1.18);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25);
 }
 
 .color-swatch.active {
-  border-color: #1d1d1f;
-  box-shadow: 0 0 0 1px #1d1d1f;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #4f46e5;
 }
 
 /* Card Body Content */
@@ -263,11 +270,11 @@
   color: var(--text-muted);
 }
 
-/* Checklist Body (Apple Reminders Style) */
+/* Checklist Body (Layered Pastel Rounded Item Pills) */
 .checklist-progress-container {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   margin-bottom: 10px;
 }
 
@@ -282,15 +289,15 @@
 
 .checklist-progress-bar {
   width: 100%;
-  height: 4px;
-  background: rgba(0, 0, 0, 0.06);
+  height: 5px;
+  background: rgba(160, 175, 225, 0.2);
   border-radius: var(--radius-full);
   overflow: hidden;
 }
 
 .checklist-progress-fill {
   height: 100%;
-  background: var(--accent-primary);
+  background: var(--accent-gradient);
   border-radius: var(--radius-full);
   transition: width 0.25s var(--ease-smooth);
 }
@@ -307,24 +314,26 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 3px 6px;
+  padding: 5px 8px;
   border-radius: var(--radius-sm);
-  transition: background 0.12s ease;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: background 0.12s ease, border-color 0.12s ease;
 }
 
 .checklist-item:hover {
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.95);
 }
 
-/* Apple Circular Checkbox */
 .checklist-checkbox {
   appearance: none;
   -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
   border-radius: 50%;
   border: 1.5px solid var(--text-muted);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.8);
   cursor: pointer;
   display: grid;
   place-content: center;
@@ -337,15 +346,15 @@
 }
 
 .checklist-checkbox:checked {
-  background: var(--accent-primary);
-  border-color: var(--accent-primary);
+  background: var(--accent-gradient);
+  border-color: transparent;
 }
 
 .checklist-checkbox:checked::before {
   content: "✓";
   color: #ffffff;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .checklist-input {
@@ -353,6 +362,7 @@
   border: none;
   color: var(--text-primary);
   font-size: 13px;
+  font-weight: 500;
   flex: 1;
   outline: none;
   user-select: text;
@@ -381,7 +391,7 @@
 }
 
 .checklist-item-delete:hover {
-  color: #ff3b30;
+  color: #ef4444;
 }
 
 .checklist-add-row {
@@ -391,23 +401,26 @@
   margin-top: 8px;
   color: var(--text-secondary);
   font-size: 12px;
-  padding: 4px 6px;
+  font-weight: 500;
+  padding: 5px 8px;
   border-radius: var(--radius-sm);
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px dashed rgba(160, 175, 225, 0.4);
   transition: background 0.12s ease;
 }
 
 .checklist-add-row:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.7);
   color: var(--text-primary);
 }
 
-/* Code Snippet Body (macOS Xcode Light Theme) */
+/* Code Snippet Body */
 .card-code-container {
   display: flex;
   flex-direction: column;
-  background: rgba(245, 245, 247, 0.95);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-md);
   overflow: hidden;
 }
@@ -417,26 +430,26 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px;
-  background: rgba(0, 0, 0, 0.02);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .code-lang-selector {
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(160, 175, 225, 0.35);
   color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 500;
   border-radius: 4px;
-  padding: 2px 5px;
+  padding: 2px 6px;
   outline: none;
   cursor: pointer;
 }
 
 .code-copy-btn {
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(160, 175, 225, 0.35);
   color: var(--text-secondary);
   cursor: pointer;
   display: flex;
@@ -444,20 +457,20 @@
   gap: 4px;
   font-size: 11px;
   font-weight: 500;
-  padding: 2px 6px;
+  padding: 2px 8px;
   border-radius: 4px;
-  transition: background 0.12s ease;
+  transition: all 0.12s ease;
 }
 
 .code-copy-btn:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: #ffffff;
   color: var(--text-primary);
 }
 
 .card-code-textarea {
   background: transparent;
   border: none;
-  color: #1d1d1f;
+  color: #181c2f;
   font-family: var(--font-mono);
   font-size: 12px;
   line-height: 1.6;
@@ -473,15 +486,15 @@
   white-space: pre;
 }
 
-/* Connector Ports (Pins) — Clean, subtle, no pulsing glow */
+/* Connector Ports (Pins) */
 .card-port {
   position: absolute;
-  width: 11px;
-  height: 11px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #ffffff;
-  border: 1.5px solid var(--text-secondary);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  border: 2px solid #8b5cf6;
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.2);
   cursor: crosshair;
   z-index: 30;
   opacity: 0;
@@ -496,36 +509,36 @@
 .canvas-card.is-selected .card-port,
 .canvas-card.is-connecting-source .card-port,
 .is-connecting-mode .card-port {
-  opacity: 0.85;
+  opacity: 0.9;
   transform: scale(1);
 }
 
 .card-port:hover,
 .card-port.is-snap-target {
-  background: var(--accent-primary);
+  background: #5390f5;
   border-color: #ffffff;
-  transform: scale(1.3) !important;
+  transform: scale(1.35) !important;
   opacity: 1 !important;
-  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3) !important;
+  box-shadow: 0 2px 10px rgba(83, 144, 245, 0.4) !important;
 }
 
 .card-port.port-top {
-  top: -5px;
+  top: -6px;
   left: 50%;
   transform: translateX(-50%) scale(0.7);
 }
 .card-port.port-bottom {
-  bottom: -5px;
+  bottom: -6px;
   left: 50%;
   transform: translateX(-50%) scale(0.7);
 }
 .card-port.port-left {
-  left: -5px;
+  left: -6px;
   top: 50%;
   transform: translateY(-50%) scale(0.7);
 }
 .card-port.port-right {
-  right: -5px;
+  right: -6px;
   top: 50%;
   transform: translateY(-50%) scale(0.7);
 }

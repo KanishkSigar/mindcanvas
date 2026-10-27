@@ -166,20 +166,21 @@ class MinimapEngine {
 
   getColorHex(colorName) {
     const map = {
+      frost: '#ffffff',
       white: '#ffffff',
-      yellow: '#fff3c4',
-      mint: '#d4f5e2',
-      sky: '#d8ecfd',
-      lilac: '#ebd9fc',
-      peach: '#fde3d8',
-      violet: '#ebd9fc',
-      cyan: '#d8ecfd',
-      emerald: '#d4f5e2',
-      amber: '#fff3c4',
-      rose: '#fde3d8',
-      slate: '#f5f5f7'
+      periwinkle: '#e0e7ff',
+      lavender: '#ede9fe',
+      sky: '#dbeafe',
+      lilac: '#f3e8ff',
+      indigo: '#e8eafc',
+      violet: '#ede9fe',
+      cyan: '#dbeafe',
+      emerald: '#dcfce7',
+      amber: '#fef3c7',
+      rose: '#fce7f3',
+      slate: '#f1f5f9'
     };
-    return map[colorName] || '#ffffff';
+    return map[colorName] || '#e0e7ff';
   }
 }
 
