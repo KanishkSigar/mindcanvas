@@ -40,19 +40,25 @@ html, body {
   cursor: crosshair !important;
 }
 
-/* Luminous Soft Ambient Lighting (Diffused Pastel Blue & Purple Glow) */
+/* Scenic Photographic Background with Optical Glass Lighting */
 #canvas-grid {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: var(--bg-canvas);
-  background-image:
-    radial-gradient(circle at 18% 18%, rgba(200, 215, 255, 0.65) 0%, transparent 45%),
-    radial-gradient(circle at 82% 14%, rgba(228, 218, 255, 0.7) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(230, 238, 255, 0.5) 0%, transparent 58%),
-    radial-gradient(circle at 82% 82%, rgba(236, 218, 255, 0.6) 0%, transparent 45%),
-    radial-gradient(circle at 14% 82%, rgba(195, 230, 255, 0.55) 0%, transparent 45%);
-  background-size: 100% 100%;
+  background-image: var(--active-wallpaper);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: background-image 0.45s ease-in-out;
+  filter: brightness(0.98) contrast(1.02);
+}
+
+#canvas-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04) 0%, rgba(15, 23, 42, 0.18) 100%);
+  pointer-events: none;
 }
 
 .canvas-ambient-vignette {
@@ -91,17 +97,19 @@ html, body {
 
 .connection-path {
   fill: none;
-  stroke: #7ea8f8;
-  stroke-width: 2.2px;
+  stroke: rgba(255, 255, 255, 0.85);
+  stroke-width: 2.5px;
   stroke-linecap: round;
+  filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.4));
   transition: stroke 0.18s ease, stroke-width 0.18s ease;
   pointer-events: stroke;
   cursor: pointer;
 }
 
 .connection-group:hover .connection-path {
-  stroke-width: 3px !important;
-  stroke: #a855f7 !important;
+  stroke-width: 3.5px !important;
+  stroke: #ffffff !important;
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.8));
 }
 
 .connection-path-glow {
@@ -115,9 +123,12 @@ html, body {
 /* Wire preview during connection drag */
 #connection-preview-path {
   fill: none;
-  stroke: var(--accent-primary);
-  stroke-width: 2.2px;
+  stroke: #ffffff;
+  stroke-width: 2.5px;
   stroke-dasharray: 6 5;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  pointer-events: none;
+}
   pointer-events: none;
 }
 
@@ -176,15 +187,15 @@ html, body {
   align-items: center;
   gap: 8px;
   padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.48);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1.5px solid var(--border-glass);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-hud);
   color: var(--text-primary);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   animation: toastIn 0.22s var(--ease-spring) forwards;
   transition: all 0.2s ease;
 }
