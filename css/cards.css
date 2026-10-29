@@ -8,15 +8,15 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--radius-lg);
-  background: var(--card-bg, rgba(255, 255, 255, 0.42));
+  background: var(--card-bg, rgba(255, 255, 255, 0.78));
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.65));
+  border: 1.5px solid var(--card-border, rgba(255, 255, 255, 0.9));
   box-shadow: var(--shadow-card);
   color: var(--text-primary);
-  min-width: 270px;
-  max-width: 520px;
-  width: 320px;
+  min-width: 280px;
+  max-width: 540px;
+  width: 350px;
   transition: box-shadow 0.2s var(--ease-smooth),
               border-color 0.2s var(--ease-smooth),
               transform 0.16s ease-out;
@@ -194,9 +194,11 @@
   border: none;
   color: var(--text-primary);
   font-family: var(--font-display);
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.01em;
+  flex: 1;
+  min-width: 0;
   width: 100%;
   padding: 3px 6px;
   border-radius: var(--radius-xs);
@@ -649,145 +651,4 @@
 
 .canvas-card .card-resize-handle:hover {
   opacity: 1;
-}
-
-/* ==========================================================================
-   VisionOS Liquid Glass Weather Card Widget (Inspired by Image 3)
-   ========================================================================== */
-.card-weather-glance {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 6px 4px;
-}
-
-.weather-header-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  margin-bottom: 8px;
-}
-
-.weather-city-name {
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-}
-
-.weather-day-label {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-.weather-icon-art {
-  font-size: 42px;
-  line-height: 1;
-  margin: 4px 0 8px 0;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
-}
-
-.weather-temp-display {
-  font-family: var(--font-display);
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.weather-condition-text {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin-bottom: 14px;
-}
-
-.weather-metrics-capsules {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  width: 100%;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.45);
-}
-
-.weather-capsule {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  padding: 8px 6px;
-  background: rgba(255, 255, 255, 0.42);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
-}
-
-.weather-capsule-icon {
-  font-size: 14px;
-}
-
-.weather-capsule-val {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-/* ==========================================================================
-   macOS Project Finder Card (Inspired by Image 4)
-   ========================================================================== */
-.card-finder-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding: 4px;
-}
-
-.finder-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 10px 6px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  cursor: pointer;
-  transition: all 0.16s var(--ease-spring);
-  text-align: center;
-}
-
-.finder-item:hover {
-  background: rgba(255, 255, 255, 0.75);
-  border-color: rgba(255, 255, 255, 0.95);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
-}
-
-.finder-icon {
-  font-size: 26px;
-  line-height: 1;
-}
-
-.finder-name {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-primary);
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.finder-count {
-  font-size: 9.5px;
-  color: var(--text-muted);
 }
