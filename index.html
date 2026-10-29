@@ -97,6 +97,13 @@
       </button>
 
       <div id="templates-menu" class="templates-menu">
+        <button class="template-item" data-template="apple-glass">
+          <span class="template-item-icon">🍎</span>
+          <div>
+            <div>Apple Glass Showcase</div>
+            <div style="font-size:11px;color:var(--text-muted)">Weather widget, Finder & tasks</div>
+          </div>
+        </button>
         <button class="template-item" data-template="startup">
           <span class="template-item-icon">🚀</span>
           <div>
@@ -116,6 +123,47 @@
           <div>
             <div>Blank Slate</div>
             <div style="font-size:11px;color:var(--text-muted)">Clean empty canvas</div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Scenic Wallpaper Switcher Menu (Inspired by user references) -->
+    <div class="wallpaper-dropdown-container">
+      <button id="btn-wallpaper" class="hud-btn" title="Switch Apple Scenic Wallpaper">
+        <span>🖼️ Wallpaper</span>
+        <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+        </svg>
+      </button>
+
+      <div id="wallpaper-menu" class="wallpaper-menu">
+        <button class="wallpaper-option" data-wallpaper="mountains">
+          <div class="wallpaper-thumb" style="background-image: var(--wp-mountains);"></div>
+          <div>
+            <div>Alpine Lake</div>
+            <div style="font-size:11px;color:var(--text-muted)">macOS Sequoia Landscape</div>
+          </div>
+        </button>
+        <button class="wallpaper-option" data-wallpaper="waves">
+          <div class="wallpaper-thumb" style="background-image: var(--wp-waves);"></div>
+          <div>
+            <div>Cobalt Waves</div>
+            <div style="font-size:11px;color:var(--text-muted)">Deep Royal Silk Glow</div>
+          </div>
+        </button>
+        <button class="wallpaper-option" data-wallpaper="clouds">
+          <div class="wallpaper-thumb" style="background-image: var(--wp-clouds);"></div>
+          <div>
+            <div>Cumulus Sky</div>
+            <div style="font-size:11px;color:var(--text-muted)">Prismatic Blue Atmosphere</div>
+          </div>
+        </button>
+        <button class="wallpaper-option" data-wallpaper="city">
+          <div class="wallpaper-thumb" style="background-image: var(--wp-city);"></div>
+          <div>
+            <div>City Skyline</div>
+            <div style="font-size:11px;color:var(--text-muted)">Toronto Waterfront Optical</div>
           </div>
         </button>
       </div>
@@ -295,6 +343,6 @@
   <div id="toast-container"></div>
 
   <!-- Boot Scripts -->
-  <script type="module" src="js/app.js?v=2"></script>
+  <script type="module" src="js/app.js?v=3"></script>
 </body>
 </html>

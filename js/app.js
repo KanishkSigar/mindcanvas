@@ -116,6 +116,7 @@ class MindCanvasApp {
     tplBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       tplMenu.classList.toggle('is-open');
+      if (wpMenu) wpMenu.classList.remove('is-open');
     });
     window.addEventListener('click', () => tplMenu.classList.remove('is-open'));
 
@@ -128,6 +129,33 @@ class MindCanvasApp {
         this.showToast(`Loaded ${item.textContent.trim()}`, 'success');
       });
     });
+
+    // Wallpaper Switcher Dropdown
+    const wpBtn = document.getElementById('btn-wallpaper');
+    const wpMenu = document.getElementById('wallpaper-menu');
+    if (wpBtn && wpMenu) {
+      wpBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        wpMenu.classList.toggle('is-open');
+        if (tplMenu) tplMenu.classList.remove('is-open');
+      });
+      window.addEventListener('click', () => wpMenu.classList.remove('is-open'));
+
+      const savedWp = localStorage.getItem('mindcanvas_wallpaper') || 'mountains';
+      this.setWallpaper(savedWp);
+
+      wpMenu.querySelectorAll('.wallpaper-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          const wpKey = opt.getAttribute('data-wallpaper');
+          this.setWallpaper(wpKey);
+          wpMenu.classList.remove('is-open');
+          sound.playPop(560);
+          const nameEl = opt.querySelector('div > div:first-child');
+          const name = nameEl ? nameEl.textContent : wpKey;
+          this.showToast(`Wallpaper: ${name}`, 'info');
+        });
+      });
+    }
 
     // Export Trigger
     document.getElementById('btn-export-trigger').addEventListener('click', () => {
@@ -292,6 +320,20 @@ class MindCanvasApp {
         }
         break;
     }
+  }
+
+  setWallpaper(key) {
+    const root = document.documentElement;
+    root.style.setProperty('--active-wallpaper', `var(--wp-${key})`);
+    try {
+      localStorage.setItem('mindcanvas_wallpaper', key);
+    } catch (e) {
+      // Ignore quota error if any
+    }
+
+    document.querySelectorAll('.wallpaper-option').forEach(opt => {
+      opt.classList.toggle('is-active', opt.getAttribute('data-wallpaper') === key);
+    });
   }
 
   updateStatsDisplay() {
