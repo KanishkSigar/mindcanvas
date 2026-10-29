@@ -4,7 +4,7 @@
 
 import { TEMPLATES } from './templates.js';
 
-const STORAGE_KEY = 'mindcanvas_board_v3';
+const STORAGE_KEY = 'mindcanvas_board_v4';
 
 class Store {
   constructor() {

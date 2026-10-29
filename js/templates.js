@@ -5,83 +5,62 @@
 export const TEMPLATES = {
   'apple-glass': {
     id: 'apple-glass',
-    name: '🍎 Apple Glass Showcase',
-    description: 'visionOS weather widgets, macOS project finder, and optical glass cards',
-    viewport: { x: 320, y: 160, scale: 0.95 },
+    name: '🍎 Apple Glass Board',
+    description: 'Clean spatial scratchpad with frosted glass panels and soft lighting',
+    viewport: { x: 260, y: 140, scale: 0.95 },
     cards: [
       {
-        id: 'card-weather',
-        type: 'weather',
-        title: 'Weather Glance',
-        color: 'sky',
-        x: 60,
-        y: 60,
-        width: 300,
-        city: 'Toronto',
-        day: 'Today',
-        icon: '⛅',
-        temp: '21°',
-        cond: 'Mostly Cloudy'
-      },
-      {
-        id: 'card-finder',
-        type: 'finder',
-        title: 'Downloads & Projects',
-        color: 'periwinkle',
-        x: 420,
-        y: 60,
-        width: 360,
-        folders: [
-          { name: 'geist-font', items: '6 Items', icon: '📁' },
-          { name: 'PulseBoard', items: '12 Items', icon: '📁' },
-          { name: 'AtlasApp', items: '8 Items', icon: '📁' },
-          { name: 'Invoices', items: '48 Items', icon: '📁' },
-          { name: 'DesignKit', items: '24 Items', icon: '📁' },
-          { name: 'Assets', items: '16 Items', icon: '📁' }
-        ]
-      },
-      {
-        id: 'card-vision',
+        id: 'card-1',
         type: 'note',
-        title: 'Liquid Glass Vision',
-        color: 'lavender',
-        x: 60,
-        y: 390,
-        width: 300,
-        content: `Apple visionOS & macOS liquid glass aesthetic with optical refraction over high-contrast atmospheric landscapes.\n\n• Molded specular bevels\n• Prismatic chromatic edges\n• Fluid spatial canvas`
+        title: 'MindCanvas Ideas',
+        color: 'periwinkle',
+        x: 80,
+        y: 80,
+        width: 360,
+        content: `Infinite spatial scratchpad with Apple frosted glass panels and soft ambient lighting.\n\n• Double click anywhere to create a note\n• Drag dots to connect thoughts with reactive lines\n• Space + drag to glide across the canvas\n• Export to clean Markdown or JSON anytime`
       },
       {
-        id: 'card-tasks',
+        id: 'card-2',
         type: 'checklist',
-        title: 'Milestone Checklist',
-        color: 'frost',
-        x: 420,
-        y: 390,
-        width: 360,
+        title: 'Launch Milestones',
+        color: 'sky',
+        x: 500,
+        y: 80,
+        width: 380,
         items: [
-          { id: 't-1', text: 'visionOS optical glass materials', done: true },
-          { id: 't-2', text: 'macOS window traffic lights (🔴🟡🟢)', done: true },
-          { id: 't-3', text: 'Scenic atmospheric wallpaper switcher', done: true },
-          { id: 't-4', text: 'Mobile responsive liquid HUD islands', done: true }
+          { id: 't-1', text: 'Frosted glass panels with layered depth', done: true },
+          { id: 't-2', text: 'Pastel palette with soft blues and purples', done: true },
+          { id: 't-3', text: 'macOS window traffic lights (🔴 🟡 🟢)', done: true },
+          { id: 't-4', text: 'Reactive bezier connection curves', done: true },
+          { id: 't-5', text: 'Mobile responsive touch pan and zoom', done: true }
         ]
       },
       {
-        id: 'card-code',
+        id: 'card-3',
         type: 'code',
-        title: 'Optical Refraction Formula',
+        title: 'Spatial Camera Engine',
         color: 'indigo',
-        x: 840,
-        y: 180,
-        width: 340,
-        lang: 'css',
-        code: `/* Apple Optical Glass Specular Bevel */\n.glass-pill {\n  background: rgba(255, 255, 255, 0.42);\n  backdrop-filter: blur(32px) saturate(190%);\n  border: 1px solid rgba(255, 255, 255, 0.65);\n  box-shadow: inset 0 1.5px 1.5px #fff;\n}`
+        x: 80,
+        y: 440,
+        width: 360,
+        lang: 'javascript',
+        code: `// Screen to World Space Transformation\nfunction screenToWorld(sx, sy, pan, scale) {\n  return {\n    x: (sx - pan.x) / scale,\n    y: (sy - pan.y) / scale\n  };\n}`
+      },
+      {
+        id: 'card-4',
+        type: 'note',
+        title: 'Growth Strategy',
+        color: 'lavender',
+        x: 500,
+        y: 440,
+        width: 380,
+        content: `Distribution & Launch Checklist:\n\n• Show HN: "MindCanvas - Spatial Scratchpad"\n• X / Twitter visual threads with smooth demo\n• Reddit r/webdev & r/productivity communities\n• GitHub open source repository`
       }
     ],
     connections: [
-      { id: 'conn-g1', fromCard: 'card-weather', fromPort: 'right', toCard: 'card-finder', toPort: 'left' },
-      { id: 'conn-g2', fromCard: 'card-weather', fromPort: 'bottom', toCard: 'card-vision', toPort: 'top' },
-      { id: 'conn-g3', fromCard: 'card-finder', fromPort: 'bottom', toCard: 'card-tasks', toPort: 'top' },
-      { id: 'conn-g4', fromCard: 'card-finder', fromPort: 'right', toCard: 'card-code', toPort: 'left' }
+      { id: 'conn-1', fromCard: 'card-1', fromPort: 'right', toCard: 'card-2', toPort: 'left' },
+      { id: 'conn-2', fromCard: 'card-1', fromPort: 'bottom', toCard: 'card-3', toPort: 'top' },
+      { id: 'conn-3', fromCard: 'card-2', fromPort: 'bottom', toCard: 'card-4', toPort: 'top' }
     ]
   },
 

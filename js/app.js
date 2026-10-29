@@ -141,7 +141,7 @@ class MindCanvasApp {
       });
       window.addEventListener('click', () => wpMenu.classList.remove('is-open'));
 
-      const savedWp = localStorage.getItem('mindcanvas_wallpaper') || 'mountains';
+      const savedWp = localStorage.getItem('mindcanvas_wallpaper') || 'clouds';
       this.setWallpaper(savedWp);
 
       wpMenu.querySelectorAll('.wallpaper-option').forEach(opt => {
