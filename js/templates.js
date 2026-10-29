@@ -3,6 +3,88 @@
 // ==========================================================================
 
 export const TEMPLATES = {
+  'apple-glass': {
+    id: 'apple-glass',
+    name: '🍎 Apple Glass Showcase',
+    description: 'visionOS weather widgets, macOS project finder, and optical glass cards',
+    viewport: { x: 320, y: 160, scale: 0.95 },
+    cards: [
+      {
+        id: 'card-weather',
+        type: 'weather',
+        title: 'Weather Glance',
+        color: 'sky',
+        x: 60,
+        y: 60,
+        width: 300,
+        city: 'Toronto',
+        day: 'Today',
+        icon: '⛅',
+        temp: '21°',
+        cond: 'Mostly Cloudy'
+      },
+      {
+        id: 'card-finder',
+        type: 'finder',
+        title: 'Downloads & Projects',
+        color: 'periwinkle',
+        x: 420,
+        y: 60,
+        width: 360,
+        folders: [
+          { name: 'geist-font', items: '6 Items', icon: '📁' },
+          { name: 'PulseBoard', items: '12 Items', icon: '📁' },
+          { name: 'AtlasApp', items: '8 Items', icon: '📁' },
+          { name: 'Invoices', items: '48 Items', icon: '📁' },
+          { name: 'DesignKit', items: '24 Items', icon: '📁' },
+          { name: 'Assets', items: '16 Items', icon: '📁' }
+        ]
+      },
+      {
+        id: 'card-vision',
+        type: 'note',
+        title: 'Liquid Glass Vision',
+        color: 'lavender',
+        x: 60,
+        y: 390,
+        width: 300,
+        content: `Apple visionOS & macOS liquid glass aesthetic with optical refraction over high-contrast atmospheric landscapes.\n\n• Molded specular bevels\n• Prismatic chromatic edges\n• Fluid spatial canvas`
+      },
+      {
+        id: 'card-tasks',
+        type: 'checklist',
+        title: 'Milestone Checklist',
+        color: 'frost',
+        x: 420,
+        y: 390,
+        width: 360,
+        items: [
+          { id: 't-1', text: 'visionOS optical glass materials', done: true },
+          { id: 't-2', text: 'macOS window traffic lights (🔴🟡🟢)', done: true },
+          { id: 't-3', text: 'Scenic atmospheric wallpaper switcher', done: true },
+          { id: 't-4', text: 'Mobile responsive liquid HUD islands', done: true }
+        ]
+      },
+      {
+        id: 'card-code',
+        type: 'code',
+        title: 'Optical Refraction Formula',
+        color: 'indigo',
+        x: 840,
+        y: 180,
+        width: 340,
+        lang: 'css',
+        code: `/* Apple Optical Glass Specular Bevel */\n.glass-pill {\n  background: rgba(255, 255, 255, 0.42);\n  backdrop-filter: blur(32px) saturate(190%);\n  border: 1px solid rgba(255, 255, 255, 0.65);\n  box-shadow: inset 0 1.5px 1.5px #fff;\n}`
+      }
+    ],
+    connections: [
+      { id: 'conn-g1', fromCard: 'card-weather', fromPort: 'right', toCard: 'card-finder', toPort: 'left' },
+      { id: 'conn-g2', fromCard: 'card-weather', fromPort: 'bottom', toCard: 'card-vision', toPort: 'top' },
+      { id: 'conn-g3', fromCard: 'card-finder', fromPort: 'bottom', toCard: 'card-tasks', toPort: 'top' },
+      { id: 'conn-g4', fromCard: 'card-finder', fromPort: 'right', toCard: 'card-code', toPort: 'left' }
+    ]
+  },
+
   startup: {
     id: 'startup',
     name: '⚡ Product Launch Plan',

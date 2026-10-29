@@ -4,7 +4,7 @@
 
 import { TEMPLATES } from './templates.js';
 
-const STORAGE_KEY = 'mindcanvas_board_v2';
+const STORAGE_KEY = 'mindcanvas_board_v3';
 
 class Store {
   constructor() {
@@ -19,7 +19,7 @@ class Store {
       connections: [],
       selectedCardIds: new Set(),
       activeConnectingPort: null,
-      currentTemplate: 'startup'
+      currentTemplate: 'apple-glass'
     };
 
     this.init();
@@ -41,8 +41,8 @@ class Store {
       }
     }
 
-    // Default to the Startup Product Launch template
-    this.loadTemplate('startup', false);
+    // Default to the Apple Glass Showcase template
+    this.loadTemplate('apple-glass', false);
   }
 
   subscribe(event, callback) {
