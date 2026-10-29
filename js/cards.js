@@ -99,12 +99,43 @@ class CardsManager {
     const headerEl = document.createElement('div');
     headerEl.className = 'card-header';
 
+    // macOS Window Controls (Traffic Lights)
+    const trafficLights = document.createElement('div');
+    trafficLights.className = 'mac-traffic-lights';
+
+    const dotClose = document.createElement('div');
+    dotClose.className = 'mac-dot mac-dot-close';
+    dotClose.title = 'Close card';
+    dotClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      store.removeCard(card.id);
+      sound.playCut();
+    });
+
+    const dotMin = document.createElement('div');
+    dotMin.className = 'mac-dot mac-dot-minimize';
+    dotMin.title = 'Collapse / Expand card';
+    dotMin.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cardEl.classList.toggle('is-collapsed');
+      sound.playPop(480);
+    });
+
+    const dotMax = document.createElement('div');
+    dotMax.className = 'mac-dot mac-dot-maximize';
+    dotMax.title = 'Center & focus on card';
+    dotMax.addEventListener('click', (e) => {
+      e.stopPropagation();
+      viewport.flyTo(card.x + (card.width || 320) / 2, card.y + 100, 1.05);
+      sound.playPop(620);
+    });
+
+    trafficLights.appendChild(dotClose);
+    trafficLights.appendChild(dotMin);
+    trafficLights.appendChild(dotMax);
+
     const headerLeft = document.createElement('div');
     headerLeft.className = 'card-header-left';
-
-    const dragHandle = document.createElement('div');
-    dragHandle.className = 'card-drag-handle';
-    dragHandle.innerHTML = `<svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><circle cx="4" cy="4" r="1.5"/><circle cx="12" cy="4" r="1.5"/><circle cx="4" cy="8" r="1.5"/><circle cx="12" cy="8" r="1.5"/><circle cx="4" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/></svg>`;
 
     const typeIcon = document.createElement('div');
     typeIcon.className = 'card-type-icon';
@@ -119,7 +150,7 @@ class CardsManager {
     });
     titleInput.addEventListener('blur', () => store.recordHistory());
 
-    headerLeft.appendChild(dragHandle);
+    headerLeft.appendChild(trafficLights);
     headerLeft.appendChild(typeIcon);
     headerLeft.appendChild(titleInput);
 
@@ -201,6 +232,10 @@ class CardsManager {
       this.buildChecklistBody(bodyEl, card);
     } else if (card.type === 'code') {
       this.buildCodeBody(bodyEl, card);
+    } else if (card.type === 'weather') {
+      this.buildWeatherBody(bodyEl, card);
+    } else if (card.type === 'finder') {
+      this.buildFinderBody(bodyEl, card);
     }
 
     cardEl.appendChild(bodyEl);
@@ -453,12 +488,104 @@ class CardsManager {
     container.appendChild(codeContainer);
   }
 
+  buildWeatherBody(container, card) {
+    const weatherBox = document.createElement('div');
+    weatherBox.className = 'card-weather-glance';
+
+    const headerMeta = document.createElement('div');
+    headerMeta.className = 'weather-header-meta';
+
+    const city = document.createElement('div');
+    city.className = 'weather-city-name';
+    city.textContent = card.city || 'Toronto';
+
+    const day = document.createElement('div');
+    day.className = 'weather-day-label';
+    day.textContent = card.day || 'Today';
+
+    headerMeta.appendChild(city);
+    headerMeta.appendChild(day);
+
+    const icon = document.createElement('div');
+    icon.className = 'weather-icon-art';
+    icon.textContent = card.icon || '⛅';
+
+    const temp = document.createElement('div');
+    temp.className = 'weather-temp-display';
+    temp.textContent = card.temp || '21°';
+
+    const cond = document.createElement('div');
+    cond.className = 'weather-condition-text';
+    cond.textContent = card.cond || 'Mostly Cloudy';
+
+    const metrics = document.createElement('div');
+    metrics.className = 'weather-metrics-capsules';
+    metrics.innerHTML = `
+      <div class="weather-capsule">
+        <span class="weather-capsule-icon">💨</span>
+        <span class="weather-capsule-val">4 km/h</span>
+      </div>
+      <div class="weather-capsule">
+        <span class="weather-capsule-icon">🌧️</span>
+        <span class="weather-capsule-val">45%</span>
+      </div>
+      <div class="weather-capsule">
+        <span class="weather-capsule-icon">💧</span>
+        <span class="weather-capsule-val">56%</span>
+      </div>
+    `;
+
+    weatherBox.appendChild(headerMeta);
+    weatherBox.appendChild(icon);
+    weatherBox.appendChild(temp);
+    weatherBox.appendChild(cond);
+    weatherBox.appendChild(metrics);
+    container.appendChild(weatherBox);
+  }
+
+  buildFinderBody(container, card) {
+    const finderGrid = document.createElement('div');
+    finderGrid.className = 'card-finder-grid';
+
+    const folders = card.folders || [
+      { name: 'geist-font', items: '6 items', icon: '📁' },
+      { name: 'PulseBoard', items: '12 items', icon: '📁' },
+      { name: 'AtlasApp', items: '8 items', icon: '📁' },
+      { name: 'Invoices', items: '48 items', icon: '📁' },
+      { name: 'DesignKit', items: '24 items', icon: '📁' },
+      { name: 'Assets', items: '16 items', icon: '📁' }
+    ];
+
+    folders.forEach(f => {
+      const item = document.createElement('div');
+      item.className = 'finder-item';
+      item.innerHTML = `
+        <div class="finder-icon">${f.icon}</div>
+        <div class="finder-name">${f.name}</div>
+        <div class="finder-count">${f.items}</div>
+      `;
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sound.playPop(540);
+      });
+      finderGrid.appendChild(item);
+    });
+
+    container.appendChild(finderGrid);
+  }
+
   getTypeIconSvg(type) {
     if (type === 'checklist') {
       return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`;
     }
     if (type === 'code') {
       return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`;
+    }
+    if (type === 'weather') {
+      return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+    }
+    if (type === 'finder') {
+      return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>`;
     }
     return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`;
   }

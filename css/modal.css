@@ -5,9 +5,9 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(90, 105, 160, 0.2);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
   display: none;
   place-content: center;
   z-index: 1000;
@@ -30,10 +30,10 @@
 .cmd-palette-box {
   width: 100%;
   max-width: 580px;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1.5px solid var(--border-glass);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-xl);
-  box-shadow: 0 24px 64px -10px rgba(90, 110, 190, 0.25), 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.38), inset 0 1.5px 1.5px 0 #ffffff;
   backdrop-filter: var(--glass-blur-heavy);
   -webkit-backdrop-filter: var(--glass-blur-heavy);
   overflow: hidden;
@@ -185,10 +185,10 @@
 .export-modal-box {
   width: 100%;
   max-width: 680px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid var(--border-glass);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-xl);
-  box-shadow: 0 24px 64px -10px rgba(90, 110, 190, 0.28);
+  box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.38), inset 0 1.5px 1.5px 0 #ffffff;
   backdrop-filter: var(--glass-blur-heavy);
   -webkit-backdrop-filter: var(--glass-blur-heavy);
   overflow: hidden;
