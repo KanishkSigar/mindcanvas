@@ -157,7 +157,7 @@ class ViewportEngine {
     if (!this.worldEl) return;
     this.worldEl.style.transform = `translate3d(${this.panX}px, ${this.panY}px, 0) scale(${this.scale})`;
 
-    if (this.gridEl) {
+    if (this.gridEl && this.gridEl.classList.contains('has-dot-grid')) {
       const gridSize = 28 * this.scale;
       this.gridEl.style.backgroundPosition = `${this.panX}px ${this.panY}px`;
       this.gridEl.style.backgroundSize = `${gridSize}px ${gridSize}px`;

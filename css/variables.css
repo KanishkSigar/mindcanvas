@@ -1,39 +1,39 @@
 /* ==========================================================================
-   MindCanvas — Authentic Apple visionOS / macOS Liquid Glass System
-   Pastel & Optical Glass Aesthetic Inspired by Apple Scenic Landscapes
+   MindCanvas — Apple visionOS / macOS Liquid Glass System (Light Aesthetic)
+   Pastel Blues & Purples, Frosted Glass Panels & Soft Ethereal Lighting
    ========================================================================== */
 
 :root {
-  /* Verified Photographic Backdrops (Inspired by user references) */
+  /* Scenic Wallpapers (Bright, Light & Atmospheric) */
+  --wp-clouds: url('https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&w=2560&q=80');
   --wp-mountains: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2560&q=80');
   --wp-waves: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=2560&q=80');
-  --wp-clouds: url('https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&w=2560&q=80');
   --wp-city: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2560&q=80');
 
-  /* Active Canvas Wallpaper */
-  --active-wallpaper: var(--wp-mountains);
+  /* Active Canvas Wallpaper - Default to Light Cumulus Clouds (Image 2) */
+  --active-wallpaper: var(--wp-clouds);
 
-  /* Canvas Background & Fallback Gradient */
-  --bg-deep: #0e1626;
-  --bg-canvas: #131b2e;
-  --bg-surface: rgba(255, 255, 255, 0.42);
-  --bg-surface-elevated: rgba(255, 255, 255, 0.65);
-  --bg-surface-hover: rgba(255, 255, 255, 0.85);
-  --bg-glass: rgba(255, 255, 255, 0.38);
-  --bg-glass-card: rgba(255, 255, 255, 0.42);
-  --bg-glass-dropdown: rgba(255, 255, 255, 0.78);
+  /* Canvas Background & Luminous Lighting (Strictly Light Theme) */
+  --bg-deep: #f0f4fd;
+  --bg-canvas: #f0f4fd;
+  --bg-surface: rgba(255, 255, 255, 0.72);
+  --bg-surface-elevated: rgba(255, 255, 255, 0.85);
+  --bg-surface-hover: rgba(255, 255, 255, 0.95);
+  --bg-glass: rgba(255, 255, 255, 0.75);
+  --bg-glass-card: rgba(255, 255, 255, 0.78);
+  --bg-glass-dropdown: rgba(255, 255, 255, 0.92);
 
   /* True Optical Glassmorphism Filters */
-  --glass-blur: blur(32px) saturate(190%) brightness(105%);
-  --glass-blur-heavy: blur(42px) saturate(200%) brightness(108%);
-  --glass-blur-subtle: blur(18px) saturate(160%);
+  --glass-blur: blur(28px) saturate(180%) brightness(104%);
+  --glass-blur-heavy: blur(36px) saturate(190%) brightness(106%);
+  --glass-blur-subtle: blur(16px) saturate(160%);
 
   /* Borders & Specular Glass Rim Highlights */
-  --border-subtle: rgba(255, 255, 255, 0.45);
-  --border-glass: rgba(255, 255, 255, 0.65);
-  --border-rim: rgba(255, 255, 255, 0.85);
-  --border-hover: rgba(255, 255, 255, 0.95);
-  --border-active: #3b82f6;
+  --border-subtle: rgba(255, 255, 255, 0.75);
+  --border-glass: rgba(255, 255, 255, 0.9);
+  --border-rim: rgba(180, 195, 240, 0.4);
+  --border-hover: rgba(140, 165, 240, 0.6);
+  --border-active: #4f46e5;
 
   /* macOS Traffic Light Window Controls */
   --mac-close: #ff5f56;
@@ -43,55 +43,55 @@
   --mac-maximize: #27c93f;
   --mac-maximize-border: #1aab29;
 
-  /* Typography Colors (Crisp, High-Contrast & Legible against Scenic Glass) */
+  /* Typography Colors (High Contrast, Crisp Slate on Frosted Glass) */
   --text-primary: #0f172a;
   --text-secondary: #334155;
   --text-muted: #64748b;
   --text-faint: #94a3b8;
   --text-inverse: #ffffff;
 
-  /* Primary Accent: macOS Liquid Blue */
-  --accent-primary: #3b82f6;
-  --accent-primary-hover: #2563eb;
-  --accent-primary-light: rgba(59, 130, 246, 0.15);
-  --accent-purple: #8b5cf6;
-  --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  /* Primary Accent: Radiant Pastel Blue-Purple */
+  --accent-primary: #4f46e5;
+  --accent-primary-hover: #4338ca;
+  --accent-primary-light: rgba(79, 70, 229, 0.12);
+  --accent-purple: #7c3aed;
+  --accent-gradient: linear-gradient(135deg, #4f46e5, #8b5cf6);
 
-  /* Pastel Frosted Glass Card Tints (Semi-translucent to refract scenery) */
+  /* Pastel Frosted Glass Card Tints (Blues and Purples) */
   /* 1. Frost White */
   --color-frost: #ffffff;
-  --color-frost-bg: rgba(255, 255, 255, 0.45);
-  --color-frost-border: rgba(255, 255, 255, 0.75);
+  --color-frost-bg: rgba(255, 255, 255, 0.82);
+  --color-frost-border: rgba(255, 255, 255, 0.95);
   --color-frost-accent: #0f172a;
 
   /* 2. Soft Periwinkle (Signature Blue-Purple) */
   --color-periwinkle: #e0e7ff;
-  --color-periwinkle-bg: rgba(224, 231, 255, 0.45);
-  --color-periwinkle-border: rgba(199, 210, 254, 0.75);
+  --color-periwinkle-bg: rgba(235, 242, 255, 0.8);
+  --color-periwinkle-border: rgba(199, 215, 254, 0.85);
   --color-periwinkle-accent: #4f46e5;
 
   /* 3. Soft Lavender */
   --color-lavender: #ede9fe;
-  --color-lavender-bg: rgba(237, 233, 254, 0.45);
-  --color-lavender-border: rgba(221, 214, 254, 0.75);
+  --color-lavender-bg: rgba(243, 238, 255, 0.8);
+  --color-lavender-border: rgba(221, 214, 254, 0.85);
   --color-lavender-accent: #7c3aed;
 
   /* 4. Powder Sky Blue */
   --color-sky: #dbeafe;
-  --color-sky-bg: rgba(219, 234, 254, 0.45);
-  --color-sky-border: rgba(191, 219, 254, 0.75);
+  --color-sky-bg: rgba(230, 244, 255, 0.8);
+  --color-sky-border: rgba(191, 225, 254, 0.85);
   --color-sky-accent: #2563eb;
 
   /* 5. Dreamy Lilac */
   --color-lilac: #f3e8ff;
-  --color-lilac-bg: rgba(243, 232, 255, 0.45);
-  --color-lilac-border: rgba(233, 213, 255, 0.75);
+  --color-lilac-bg: rgba(248, 238, 255, 0.8);
+  --color-lilac-border: rgba(233, 213, 255, 0.85);
   --color-lilac-accent: #9333ea;
 
   /* 6. Soft Indigo */
   --color-indigo: #e0e7ff;
-  --color-indigo-bg: rgba(238, 242, 255, 0.45);
-  --color-indigo-border: rgba(199, 210, 254, 0.75);
+  --color-indigo-bg: rgba(238, 242, 255, 0.8);
+  --color-indigo-border: rgba(199, 210, 254, 0.85);
   --color-indigo-accent: #4338ca;
 
   /* Backwards-Compatibility Aliases */
@@ -109,20 +109,20 @@
   --color-cyan-border: var(--color-sky-border);
 
   --color-emerald: #10b981;
-  --color-emerald-bg: rgba(209, 250, 229, 0.45);
-  --color-emerald-border: rgba(167, 243, 208, 0.75);
+  --color-emerald-bg: rgba(220, 252, 231, 0.8);
+  --color-emerald-border: rgba(167, 243, 208, 0.85);
 
   --color-amber: #f59e0b;
-  --color-amber-bg: rgba(254, 243, 199, 0.45);
-  --color-amber-border: rgba(253, 230, 138, 0.75);
+  --color-amber-bg: rgba(254, 243, 199, 0.8);
+  --color-amber-border: rgba(253, 230, 138, 0.85);
 
   --color-rose: #f43f5e;
-  --color-rose-bg: rgba(255, 228, 230, 0.45);
-  --color-rose-border: rgba(254, 205, 211, 0.75);
+  --color-rose-bg: rgba(255, 228, 230, 0.8);
+  --color-rose-border: rgba(254, 205, 211, 0.85);
 
   --color-slate: #64748b;
-  --color-slate-bg: rgba(241, 245, 249, 0.45);
-  --color-slate-border: rgba(226, 232, 240, 0.75);
+  --color-slate-bg: rgba(241, 245, 249, 0.8);
+  --color-slate-border: rgba(226, 232, 240, 0.85);
 
   --color-yellow: var(--color-periwinkle-accent);
   --color-yellow-bg: var(--color-periwinkle-bg);
@@ -136,54 +136,50 @@
   --color-peach-bg: var(--color-lilac-bg);
   --color-peach-border: var(--color-lilac-border);
 
-  /* Optical Glass Bevel Shadows & Specular Rim Insets */
-  --shadow-sm: 0 4px 12px -2px rgba(15, 23, 42, 0.12),
-               inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
+  /* Optical Glass Bevel Shadows (Soft Ambient, No Harsh Shadows) */
+  --shadow-sm: 0 2px 8px -1px rgba(70, 90, 160, 0.08),
+               inset 0 1px 1px 0 #ffffff;
 
-  --shadow-md: 0 10px 24px -4px rgba(15, 23, 42, 0.18),
-               inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.9);
+  --shadow-md: 0 6px 18px -3px rgba(70, 90, 160, 0.12),
+               inset 0 1.5px 1px 0 #ffffff;
 
-  --shadow-lg: 0 20px 45px -8px rgba(15, 23, 42, 0.25),
-               inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
-               inset 0 -1px 1px 0 rgba(255, 255, 255, 0.25);
+  --shadow-lg: 0 14px 34px -4px rgba(70, 90, 160, 0.15),
+               inset 0 1.5px 1.5px 0 #ffffff,
+               inset 0 -1px 1px 0 rgba(200, 215, 250, 0.25);
 
-  --shadow-xl: 0 28px 65px -12px rgba(15, 23, 42, 0.35),
-               0 10px 24px -4px rgba(15, 23, 42, 0.2),
-               inset 0 2px 2px 0 rgba(255, 255, 255, 0.95);
+  --shadow-xl: 0 22px 50px -8px rgba(70, 90, 160, 0.18),
+               inset 0 2px 2px 0 #ffffff;
 
-  /* Molded Liquid Glass Card Shadow (Authentic specular bevel) */
+  /* Molded Liquid Glass Card Shadow */
   --shadow-card:
-    0 22px 55px -10px rgba(15, 23, 42, 0.28),
-    0 8px 22px -6px rgba(15, 23, 42, 0.15),
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1.5px 1px 0 rgba(255, 255, 255, 0.25),
-    inset 1.5px 0 1px 0 rgba(255, 255, 255, 0.35),
-    inset -1.5px 0 1px 0 rgba(255, 255, 255, 0.35);
+    0 16px 40px -6px rgba(70, 90, 160, 0.15),
+    0 4px 14px -2px rgba(70, 90, 160, 0.08),
+    inset 0 1.5px 1.5px 0 #ffffff,
+    inset 0 -1px 1px 0 rgba(200, 215, 250, 0.35);
 
   --shadow-card-hover:
-    0 28px 65px -10px rgba(15, 23, 42, 0.35),
-    0 12px 28px -6px rgba(15, 23, 42, 0.2),
-    inset 0 2px 2px 0 #ffffff,
-    inset 0 -1.5px 1px 0 rgba(255, 255, 255, 0.35);
-
-  --shadow-card-selected:
-    0 28px 70px -8px rgba(37, 99, 235, 0.35),
-    0 0 0 2.5px rgba(59, 130, 246, 0.8),
+    0 22px 50px -6px rgba(70, 90, 160, 0.2),
+    0 6px 18px -2px rgba(70, 90, 160, 0.1),
     inset 0 2px 2px 0 #ffffff;
 
-  /* Floating Liquid Glass Pill Shadow (Inspired by Image 1 & 2) */
+  --shadow-card-selected:
+    0 22px 50px -6px rgba(79, 70, 229, 0.25),
+    0 0 0 2.5px var(--accent-primary),
+    inset 0 2px 2px 0 #ffffff;
+
+  /* Floating Liquid Glass Pill Shadow (Image 1 & 2) */
   --shadow-hud:
-    0 16px 40px -8px rgba(15, 23, 42, 0.3),
-    0 6px 16px -4px rgba(15, 23, 42, 0.15),
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.25);
+    0 12px 34px -4px rgba(70, 90, 160, 0.16),
+    0 3px 10px -2px rgba(70, 90, 160, 0.08),
+    inset 0 1.5px 1.5px 0 #ffffff,
+    inset 0 -1px 1px 0 rgba(200, 215, 250, 0.3);
 
   /* Typography */
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Plus Jakarta Sans", system-ui, sans-serif;
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Outfit", var(--font-sans);
   --font-mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
 
-  /* Dimensions & Molded Radii */
+  /* Dimensions & Radii */
   --radius-xs: 7px;
   --radius-sm: 12px;
   --radius-md: 18px;

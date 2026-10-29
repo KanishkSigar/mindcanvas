@@ -40,24 +40,24 @@ html, body {
   cursor: crosshair !important;
 }
 
-/* Scenic Photographic Background with Optical Glass Lighting */
+/* Scenic Photographic Background with Optical Glass Lighting (Light Aesthetic) */
 #canvas-grid {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  background-color: var(--bg-canvas);
   background-image: var(--active-wallpaper);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
   transition: background-image 0.45s ease-in-out;
-  filter: brightness(0.98) contrast(1.02);
 }
 
 #canvas-grid::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04) 0%, rgba(15, 23, 42, 0.18) 100%);
+  background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.15) 0%, rgba(225, 235, 255, 0.3) 100%);
   pointer-events: none;
 }
 
@@ -97,10 +97,10 @@ html, body {
 
 .connection-path {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.85);
-  stroke-width: 2.5px;
+  stroke: rgba(99, 102, 241, 0.65);
+  stroke-width: 2.4px;
   stroke-linecap: round;
-  filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.4));
+  filter: drop-shadow(0 2px 4px rgba(70, 90, 160, 0.15));
   transition: stroke 0.18s ease, stroke-width 0.18s ease;
   pointer-events: stroke;
   cursor: pointer;
@@ -108,8 +108,8 @@ html, body {
 
 .connection-group:hover .connection-path {
   stroke-width: 3.5px !important;
-  stroke: #ffffff !important;
-  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.8));
+  stroke: #4f46e5 !important;
+  filter: drop-shadow(0 0 8px rgba(79, 70, 229, 0.35));
 }
 
 .connection-path-glow {
@@ -123,12 +123,10 @@ html, body {
 /* Wire preview during connection drag */
 #connection-preview-path {
   fill: none;
-  stroke: #ffffff;
-  stroke-width: 2.5px;
+  stroke: var(--accent-primary);
+  stroke-width: 2.4px;
   stroke-dasharray: 6 5;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
-  pointer-events: none;
-}
+  filter: drop-shadow(0 2px 6px rgba(70, 90, 160, 0.2));
   pointer-events: none;
 }
 
@@ -137,7 +135,14 @@ html, body {
   pointer-events: all;
   cursor: pointer;
   opacity: 0;
-  transform: scale(0.8);
+  transform: scale(0.7);
+  transition: opacity 0.16s var(--ease-smooth), transform 0.16s var(--ease-spring);
+}
+
+.connection-group:hover .connection-delete-pill {
+  opacity: 1;
+  transform: scale(1);
+}
   transition: opacity 0.16s var(--ease-smooth), transform 0.16s var(--ease-spring);
 }
 
